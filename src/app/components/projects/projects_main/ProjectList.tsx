@@ -2,11 +2,12 @@ import { ScrollView, Text, View } from "react-native";
 import ProjectInfo from "./ProjectInfo";
 import { StyleSheet } from "react-native";
 import { Project } from "@/app/entities/projects/Project";
-import { mainService } from "@/app/services/projects/projects.service";
 
-const projectList: Project[] = await mainService.getAllProjects();
+interface ProjectListProps {
+    projectList: Project[];
+}
 
-export default function ProjectList() {
+export default function ProjectList({ projectList }: ProjectListProps) {
     return (
         <ScrollView>
             {projectList.map((project) => (
