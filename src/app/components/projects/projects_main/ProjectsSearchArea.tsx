@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import SearchBar from "../../common/DefaultSearchBar";
-import SearchFilters from "../../common/DefaultSearchFilters";
+import SearchBar from "../../common/search_tools/DefaultSearchBar";
+import SearchFilters from "../../common/search_tools/DefaultSearchFilters";
 
 
 export default function ProjectsSearchArea() {
