@@ -1,8 +1,8 @@
-import { Project } from "@/app/entities/projects/Project";
+import { ProjectData } from "@/app/entities/projects/Project";
 
 export const getAllProjectsUsecase = {
 
-    async execute(): Promise<Project[]> {
+    async execute(): Promise<ProjectData[]> {
 
         return [
             {

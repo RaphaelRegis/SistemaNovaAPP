@@ -3,10 +3,10 @@ import ProjectsActions from "./ProjectsActions";
 import ProjectList from "./ProjectList";
 import ProjectsSearchArea from "./ProjectsSearchArea";
 import { StyleSheet } from "react-native";
-import { Project } from "@/app/entities/projects/Project";
+import { ProjectData } from "@/app/entities/projects/Project";
 import { mainService } from "@/app/services/projects/projects.service";
 
-const projectList: Project[] = await mainService.getAllProjects();
+const projectList: ProjectData[] = await mainService.getAllProjects();
 
 export default function ProjectMain() {
     return (

@@ -1,8 +1,8 @@
 import { Text, View } from "react-native";
-import { Project } from "@/app/entities/projects/Project";
+import { ProjectData } from "@/app/entities/projects/Project";
 
 interface ProjectInfoProps {
-    project: Project;
+    project: ProjectData;
 }
 
 export default function ProjectInfo({ project }: ProjectInfoProps) {

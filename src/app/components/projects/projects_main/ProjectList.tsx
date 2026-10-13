@@ -1,10 +1,10 @@
 import { ScrollView, Text, View } from "react-native";
 import ProjectInfo from "./ProjectInfo";
 import { StyleSheet } from "react-native";
-import { Project } from "@/app/entities/projects/Project";
+import { ProjectData } from "@/app/entities/projects/Project";
 
 interface ProjectListProps {
-    projectList: Project[];
+    projectList: ProjectData[];
 }
 
 export default function ProjectList({ projectList }: ProjectListProps) {
