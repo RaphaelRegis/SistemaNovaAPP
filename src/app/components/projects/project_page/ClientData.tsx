@@ -1,9 +1,14 @@
 import { Text, View } from "react-native";
+import { ClientData } from "@/app/entities/projects/Project";
 
-export default function ClientData() {
+interface ClientDataProps {
+    clientData: ClientData;
+}
+
+export default function ClientData({ clientData }: ClientDataProps) {
     return (
         <View>
-            <Text>Client Data</Text>
+            <Text>{clientData.name}</Text>
         </View>
     );
 }
