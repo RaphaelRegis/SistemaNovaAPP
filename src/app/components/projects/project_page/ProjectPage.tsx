@@ -7,12 +7,13 @@ import ProjectActions from "./ProjectActions";
 import { FullProject } from "@/app/entities/projects/Project";
 import { mainService } from "@/app/services/projects/projects.service";
 import ServiceList from "./ServiceList";
+import { DefaultProjectPageContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
 
 const fullProject: FullProject = await mainService.getFullProject();
 
 export default function ProjectPage() {
     return (
-        <View>
+        <View style={DefaultProjectPageContainer}>
             <ProjectMetadata projectData={fullProject.project_data} />
             <ClientData clientData={fullProject.client_data} />
             <AddressList addresses={fullProject.address_list} />

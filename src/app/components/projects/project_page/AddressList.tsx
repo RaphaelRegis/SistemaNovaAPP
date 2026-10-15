@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
 import { Address } from "@/app/entities/projects/Project";
+import { DefaultAddressesListContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
 
 interface AddressListProps {
     addresses: Address[];
@@ -7,7 +8,7 @@ interface AddressListProps {
 
 export default function AddressList({ addresses }: AddressListProps) {
     return (
-        <View>
+        <View style={DefaultAddressesListContainer}>
             {addresses.map((address) => (
                 <Text key={address.id}>{address.address}</Text>
             ))}

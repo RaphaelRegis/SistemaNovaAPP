@@ -1,1 +1,2 @@
-export const SearchToolsContainer = {}
+export const DefaultSearchBarContainer = {}
+export const DefaultSearchFiltersContainer = {}

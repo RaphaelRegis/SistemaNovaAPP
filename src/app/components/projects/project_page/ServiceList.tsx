@@ -1,5 +1,6 @@
 import { Service } from "@/app/entities/projects/Project";
 import { Text, View } from "react-native";
+import { DefaultServiceListContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
 
 interface ServiceListProps {
     services: Service[];
@@ -7,7 +8,7 @@ interface ServiceListProps {
 
 export default function ServiceList({ services }: ServiceListProps) {
     return (
-        <View>
+        <View style={DefaultServiceListContainer}>
             {services.map((service) => (
                 <Text key={service.id}>{service.description}</Text>
             ))}

@@ -1,1 +1,1 @@
-export const HeaderContainer = {}
+export const DefaultHeaderContainer = {}
