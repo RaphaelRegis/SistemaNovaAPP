@@ -7,7 +7,7 @@ import ProjectActions from "./ProjectActions";
 import { FullProject } from "@/app/entities/projects/Project";
 import { mainService } from "@/app/services/projects/projects.service";
 import ServiceList from "./ServiceList";
-import { DefaultProjectPageContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
+import { DefaultProjectPageContainer } from "@/app/styles/projects/project_page/ProjectPage.style"
 
 const fullProject: FullProject = await mainService.getFullProject();
 

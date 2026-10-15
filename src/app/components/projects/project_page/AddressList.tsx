@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { Address } from "@/app/entities/projects/Project";
-import { DefaultAddressesListContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
+import { DefaultAddressesListContainer } from "@/app/styles/projects/project_page/ProjectPage.style"
 
 interface AddressListProps {
     addresses: Address[];

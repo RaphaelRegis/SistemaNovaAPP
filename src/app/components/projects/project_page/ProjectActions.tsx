@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { DefaultProjectActionsContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
+import { DefaultProjectActionsContainer } from "@/app/styles/projects/project_page/ProjectPage.style"
 
 export default function ProjectActions() {
     return (

@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { ProjectData } from "@/app/entities/projects/Project";
-import { DefaultProjectMetadataContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
+import { DefaultProjectMetadataContainer } from "@/app/styles/projects/project_page/ProjectPage.style"
 
 interface ProjectMetadataProps {
     projectData: ProjectData;

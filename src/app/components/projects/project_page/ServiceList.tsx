@@ -1,6 +1,6 @@
 import { Service } from "@/app/entities/projects/Project";
 import { Text, View } from "react-native";
-import { DefaultServiceListContainer } from "@/app/styles/projects/projects_page/ProjectPage.style"
+import { DefaultServiceListContainer } from "@/app/styles/projects/project_page/ProjectPage.style"
 
 interface ServiceListProps {
     services: Service[];
