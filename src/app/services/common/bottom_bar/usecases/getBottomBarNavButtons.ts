@@ -8,18 +8,22 @@ export const getBottomBarNavButtonsUsecase = {
             {
                 name: "Projects",
                 icon: "Project",
+                is_active: true
             },
             {
                 name: "Products",
                 icon: "Product",
+                is_active: false
             },
             {
                 name: "Notifications",
                 icon: "Notification",
+                is_active: false
             },
             {
                 name: "Settings",
                 icon: "Settings",
+                is_active: false
             },
         ]
     }
