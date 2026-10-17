@@ -2,18 +2,18 @@ import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
 import DefaultSearchBar from '../../common/search_tools/DefaultSearchBar';
 import DefaultSearchFilters from '../../common/search_tools/DefaultSearchFilters';
-import {
-    projectsSearchBarConfig,
-    projectsSearchFiltersConfig,
-} from '@/app/services/projects/projectsSearchConfig';
 import { FilterValues, SearchPayload } from '@/app/entities/common/search_tools/SearchConfig';
 import { DefaultProjectsSearchAreaContainer } from '@/app/styles/projects/projects_main/ProjectMain.style';
+import { projectsSearchAreaService } from '@/app/services/projects/projects.service';
 
 interface ProjectsSearchAreaProps {
     onSearch: (payload: SearchPayload) => void;
 }
 
 export default function ProjectsSearchArea({ onSearch }: ProjectsSearchAreaProps) {
+    const searchBarConfig = projectsSearchAreaService.getProjectSearchBarConfig()
+    const searchFiltersConfig = projectsSearchAreaService.getProjectFiltersConfig()
+
     const [filterValues, setFilterValues] = useState<FilterValues>({});
 
     const handleFiltersChange = useCallback((values: FilterValues) => {
@@ -23,12 +23,12 @@ export default function ProjectsSearchArea({ onSearch }: ProjectsSearchAreaProps
     return (
         <View style={DefaultProjectsSearchAreaContainer}>
             <DefaultSearchBar
-                config={projectsSearchBarConfig}
+                config={searchBarConfig}
                 currentFilters={filterValues}
                 onSearch={onSearch}
             />
             <DefaultSearchFilters
-                config={projectsSearchFiltersConfig}
+                config={searchFiltersConfig}
                 values={filterValues}
                 onChange={handleFiltersChange}
             />
