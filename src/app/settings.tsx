@@ -1,0 +1,17 @@
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+export default function SettingsScreen() {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>Configurações</Text>
+            <Text style={styles.sub}>Em desenvolvimento...</Text>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f5f5f5' },
+    text: { fontSize: 22, fontWeight: '700', color: '#333' },
+    sub: { fontSize: 14, color: '#999', marginTop: 8 },
+});
