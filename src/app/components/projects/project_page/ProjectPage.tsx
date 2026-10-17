@@ -1,4 +1,5 @@
-import { View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, ActivityIndicator } from "react-native";
 import ProjectMetadata from "./ProjectMetadata";
 import ClientData from "./ClientData";
 import AddressList from "./AddressList";
@@ -7,11 +8,23 @@ import ProjectActions from "./ProjectActions";
 import { FullProject } from "@/app/entities/projects/Project";
 import { mainService } from "@/app/services/projects/projects.service";
 import ServiceList from "./ServiceList";
-import { DefaultProjectPageContainer } from "@/app/styles/projects/project_page/ProjectPage.style"
-
-const fullProject: FullProject = await mainService.getFullProject();
+import { DefaultProjectPageContainer } from "@/app/styles/projects/project_page/ProjectPage.style";
 
 export default function ProjectPage() {
+    const [fullProject, setFullProject] = useState<FullProject | null>(null);
+
+    useEffect(() => {
+        mainService.getFullProject().then(setFullProject);
+    }, []);
+
+    if (!fullProject) {
+        return (
+            <View style={DefaultProjectPageContainer}>
+                <ActivityIndicator size="large" />
+            </View>
+        );
+    }
+
     return (
         <View style={DefaultProjectPageContainer}>
             <ProjectMetadata projectData={fullProject.project_data} />
