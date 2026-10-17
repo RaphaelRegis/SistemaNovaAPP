@@ -2,8 +2,9 @@ import { FullProject, ProjectData } from "@/app/entities/projects/Project";
 import { getAllProjectsUsecase } from "./usecases/getAllProjectsUsecase";
 import { getFullProjectUsecase } from "./usecases/getFullProjectUsecase";
 import { getProjectSearchBarConfigUsecase } from "./usecases/getProjectSearchBarConfigUsecase";
-import { SearchBarConfig, SearchFiltersConfig } from "@/app/entities/common/search_tools/SearchConfig";
+import { SearchBarConfig, SearchFiltersConfig, SearchPayload } from "@/app/entities/common/search_tools/SearchConfig";
 import { getProjectSearchFiltersConfigUsecase } from "./usecases/getProjectSearchFiltersConfigUsecase";
+import { applyProjectSearchUsecase } from "./usecases/applyProjectSearchUsecase";
 
 export const mainService = {
     async getAllProjects(): Promise<ProjectData[]> {
@@ -23,5 +24,10 @@ export const projectsSearchAreaService = {
     getProjectFiltersConfig(): SearchFiltersConfig {
         return getProjectSearchFiltersConfigUsecase.execute()
     }
+}
 
+export const projectsListService = {
+    applyProjectSearch(list: ProjectData[], payload: SearchPayload | null): ProjectData[] {
+        return applyProjectSearchUsecase.execute(list, payload);
+    }
 }
