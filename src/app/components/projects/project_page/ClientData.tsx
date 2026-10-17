@@ -6,10 +6,10 @@ interface ClientDataProps {
     clientData: ClientData;
 }
 
-export default function ClientData({ clientData }: ClientDataProps) {
+export default function ClientDataView({ clientData }: ClientDataProps) {
     return (
         <View style={DefaultClientDataContainer}>
             <Text>{clientData.name}</Text>
         </View>
     );
-}
+}
