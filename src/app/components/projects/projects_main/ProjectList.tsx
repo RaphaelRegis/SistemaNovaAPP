@@ -6,9 +6,7 @@ import { SearchPayload } from '@/app/entities/common/search_tools/SearchConfig';
 import { projectListStyles as styles } from '@/app/styles/projects/projects_main/ProjectMain.style';
 
 interface ProjectListProps {
-    /** Lista completa vinda do serviço */
     projectList: ProjectData[];
-    /** Último payload de busca emitido por ProjectsSearchArea */
     searchPayload: SearchPayload | null;
 }
 
