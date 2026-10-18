@@ -12,11 +12,11 @@ export const applyProjectSearchUsecase = {
         // Filtro por nome
         result = searchToolsService.defaultSearchBarFilter(query, result, 'project_name');
 
-        // Filtro por métodos de pagamento
+        // Filtro por metodos de pagamento
         const paymentMethods = filters['payment_methods'] as string[] | undefined;
         result = searchToolsService.defaultMultiselectFilter(result, paymentMethods, 'payment_methods');
 
-        // Filtro por concluído
+        // Filtro por concluido
         const done = filters['done'] as boolean | undefined;
         result = searchToolsService.defaultBooleanFilter(result, done, 'done');
 
@@ -24,11 +24,11 @@ export const applyProjectSearchUsecase = {
         const dateRange = filters['date_range'] as { from?: string; to?: string } | undefined;
         result = searchToolsService.defaultDateRangeFilter(result, dateRange, 'start_date');
 
-        // Ordenação por data
+        // Ordenacao por data
         const sortDate = filters['sort_date'] as string | undefined;
         result = searchToolsService.defaultDateSortFilter(result, sortDate, 'start_date');
 
-        // Ordenação por valor
+        // Ordenacao por valor
         const sortValue = filters['sort_value'] as string | undefined;
         result = searchToolsService.defaultFloatSortFilter(result, sortValue, 'total_value');
 
