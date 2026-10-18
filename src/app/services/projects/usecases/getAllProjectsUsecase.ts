@@ -17,6 +17,19 @@ export const getAllProjectsUsecase = {
                 done: false,
                 start_date: "08/10/2026",
                 end_date: ""
+            },
+            {
+                id: "2",
+                project_name: "Reforma da Prefeitura",
+                payment_methods: [
+                    "dinheiro",
+                    "pix"
+                ],
+                observations: "",
+                total_value: "450.00",
+                done: true,
+                start_date: "09/10/2026",
+                end_date: "10/10/2026"
             }
         ]
     }
