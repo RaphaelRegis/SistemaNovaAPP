@@ -30,8 +30,8 @@ export const getProjectSearchFiltersConfigUsecase = {
                     label: 'Ordenar por data',
                     type: 'sort',
                     sortOptions: [
-                        { label: 'Mais recente', value: 'date_desc' },
-                        { label: 'Mais antigo', value: 'date_asc' },
+                        { label: 'Mais recente', value: 'desc' },
+                        { label: 'Mais antigo', value: 'asc' },
                     ],
                 },
                 {
@@ -39,8 +39,8 @@ export const getProjectSearchFiltersConfigUsecase = {
                     label: 'Ordenar por valor',
                     type: 'sort',
                     sortOptions: [
-                        { label: 'Maior valor', value: 'value_desc' },
-                        { label: 'Menor valor', value: 'value_asc' },
+                        { label: 'Maior valor', value: 'desc' },
+                        { label: 'Menor valor', value: 'asc' },
                     ],
                 },
             ],
