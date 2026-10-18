@@ -1,10 +1,10 @@
 export const defaultMultiselectFilterUsecase = {
-    execute(list: any[], filter: string[] | undefined, propertyName: string) {
+    execute(list: any[], filters: string[] | undefined, propertyName: string) {
         let result = list;
 
-        if (filter && filter.length > 0) {
+        if (filters && filters.length > 0) {
             result = result.filter((p) => {
-                filter.some((m) => p[propertyName].includes(m));
+                return filters.some((m) => p[propertyName].includes(m));
             })
         }
 

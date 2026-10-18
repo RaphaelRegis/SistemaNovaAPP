@@ -12,7 +12,7 @@ export const searchToolsService = {
         return defaultSearchBarFilterUsecase.execute(query, list, propertyName);
     },
 
-    // not working
+    // working
     defaultMultiselectFilter(list: any[], filter: string[] | undefined, propertyName: string) {
         return defaultMultiselectFilterUsecase.execute(list, filter, propertyName);
     },
@@ -27,10 +27,12 @@ export const searchToolsService = {
         return defaultDateRangeFilterUsecase.execute(list, filter, propertyName);
     },
 
+    // not working but I am not sure if it's the implementation or something with the input
     defaultDateSortFilter(list: any[], filter: string | undefined, propertyName: string) {
         return defaultDateSortFilterUsecase.execute(list, filter, propertyName);
     },
 
+    // not working but I am not sure if it's the implementation or something with the input
     defaultFloatSortFilter(list: any[], filter: string | undefined, propertyName: string) {
         return defaultFloatSortFilterUsecase.execute(list, filter, propertyName);
     }
