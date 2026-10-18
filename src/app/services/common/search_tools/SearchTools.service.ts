@@ -22,7 +22,7 @@ export const searchToolsService = {
         return defaultBooleanFilterUsecase.execute(list, filter, propertyName);
     },
 
-    // not working
+    // working
     defaultDateRangeFilter(list: any[], filter: { from?: string, to?: string } | undefined, propertyName: string) {
         return defaultDateRangeFilterUsecase.execute(list, filter, propertyName);
     },

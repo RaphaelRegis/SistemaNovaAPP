@@ -128,7 +128,12 @@ function BooleanFilter({
     );
 }
 
-/* ─── DateRange ─── */
+function formatDateInput(text: string): string {
+    const cleaned = text.replace(/\D/g, '').slice(0, 8);
+    if (cleaned.length <= 2) return cleaned;
+    if (cleaned.length <= 4) return `${cleaned.slice(0, 2)}/${cleaned.slice(2)}`;
+    return `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}/${cleaned.slice(4)}`;
+}
 
 function DateRangeFilter({
     filter,
@@ -142,6 +147,16 @@ function DateRangeFilter({
     const from = value?.from ?? '';
     const to = value?.to ?? '';
 
+    const handleFromChange = (t: string) => {
+        const formatted = formatDateInput(t);
+        onUpdate({ ...value, from: formatted });
+    };
+
+    const handleToChange = (t: string) => {
+        const formatted = formatDateInput(t);
+        onUpdate({ ...value, to: formatted });
+    };
+
     return (
         <View style={styles.filterGroup}>
             <Text style={styles.filterLabel}>{filter.label}</Text>
@@ -150,15 +165,17 @@ function DateRangeFilter({
                     style={styles.dateInput}
                     placeholder="De (dd/mm/aaaa)"
                     value={from}
-                    onChangeText={(t) => onUpdate({ ...value, from: t })}
+                    onChangeText={handleFromChange}
                     keyboardType="numeric"
+                    maxLength={10}
                 />
                 <TextInput
                     style={styles.dateInput}
                     placeholder="Até (dd/mm/aaaa)"
                     value={to}
-                    onChangeText={(t) => onUpdate({ ...value, to: t })}
+                    onChangeText={handleToChange}
                     keyboardType="numeric"
+                    maxLength={10}
                 />
             </View>
         </View>
