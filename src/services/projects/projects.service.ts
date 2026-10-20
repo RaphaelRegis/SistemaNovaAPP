@@ -11,8 +11,8 @@ export const mainService = {
         return getAllProjectsUsecase.execute()
     },
 
-    async getFullProject(): Promise<FullProject> {
-        return getFullProjectUsecase.execute()
+    async getFullProject(id?: string): Promise<FullProject> {
+        return getFullProjectUsecase.execute(id)
     }
 }
 

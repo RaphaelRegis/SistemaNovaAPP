@@ -1,10 +1,16 @@
-import { Text, View } from "react-native";
-import { DefaultProjectActionsContainer } from "@/styles/projects/project_page/ProjectPage.style"
+import React from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
+import { projectActionsPageStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
 
 export default function ProjectActions() {
     return (
-        <View style={DefaultProjectActionsContainer}>
-            <Text>Project Actions</Text>
+        <View style={styles.container}>
+            <TouchableOpacity style={styles.saveButton} disabled>
+                <Text style={styles.saveButtonText}>Salvar alterações</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.deleteButton} disabled>
+                <Text style={styles.deleteButtonText}>Excluir projeto</Text>
+            </TouchableOpacity>
         </View>
     );
 }

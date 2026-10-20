@@ -99,15 +99,15 @@ export const projectInfoStyles = StyleSheet.create({
     },
     updateButton: {
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#4a90e2',
         borderRadius: 8,
         paddingVertical: 6,
         alignItems: 'center',
-        opacity: 0.5,
     },
     updateButtonText: {
         fontSize: 13,
-        color: '#555',
+        color: '#4a90e2',
+        fontWeight: '600',
     },
 });
 

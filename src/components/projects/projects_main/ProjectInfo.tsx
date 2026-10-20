@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { useRouter } from 'expo-router';
 import { ProjectData } from '@/entities/projects/Project';
 import { projectInfoStyles as styles } from '@/styles/projects/projects_main/ProjectMain.style';
 
@@ -14,11 +15,19 @@ interface ProjectInfoProps {
 
 export default function ProjectInfo({ project }: ProjectInfoProps) {
     const [expanded, setExpanded] = useState(false);
+    const router = useRouter();
 
     const toggleExpand = useCallback(() => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setExpanded((prev) => !prev);
     }, []);
+
+    const handleOpenProject = useCallback(() => {
+        router.push({
+            pathname: '/projects/project/[id]',
+            params: { id: project.id },
+        } as any);
+    }, [project.id, router]);
 
     return (
         <View style={styles.card}>
@@ -45,9 +54,9 @@ export default function ProjectInfo({ project }: ProjectInfoProps) {
                 </View>
             )}
 
-            {/* Rodapé: botão de atualizar */}
+            {/* Rodapé: botão de atualizar projeto */}
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.updateButton} disabled>
+                <TouchableOpacity style={styles.updateButton} onPress={handleOpenProject} activeOpacity={0.75}>
                     <Text style={styles.updateButtonText}>Atualizar projeto</Text>
                 </TouchableOpacity>
             </View>

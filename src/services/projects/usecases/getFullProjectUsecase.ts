@@ -3,7 +3,7 @@ import { FullProject } from "@/entities/projects/Project"
 
 export const getFullProjectUsecase = {
 
-    async execute(): Promise<FullProject> {
+    async execute(id?: string): Promise<FullProject> {
 
         return {
             project_data: {
