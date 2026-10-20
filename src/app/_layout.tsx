@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
-import DefaultHeader from '@/app/components/common/header/DefaultHeader';
-import DefaultBottomBar from '@/app/components/common/bottom_bar/DefaultBottomBar';
+import DefaultHeader from '@/components/common/header/DefaultHeader';
+import DefaultBottomBar from '@/components/common/bottom_bar/DefaultBottomBar';
 
 export default function RootLayout() {
     return (

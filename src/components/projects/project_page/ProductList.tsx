@@ -1,0 +1,17 @@
+import { Product } from "@/entities/projects/Project";
+import { Text, View } from "react-native";
+import { DefaultProductListContainer } from "@/styles/projects/project_page/ProjectPage.style"
+
+interface ProductListProps {
+    products: Product[];
+}
+
+export default function ProductList({ products }: ProductListProps) {
+    return (
+        <View style={DefaultProductListContainer}>
+            {products.map((product) => (
+                <Text key={product.id}>{product.name}</Text>
+            ))}
+        </View>
+    );
+}
