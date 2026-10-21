@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Stack, usePathname, useSegments } from 'expo-router';
+import { Stack, useSegments } from 'expo-router';
 import DefaultHeader from '@/components/common/header/DefaultHeader';
 import DefaultBottomBar from '@/components/common/bottom_bar/DefaultBottomBar';
 
