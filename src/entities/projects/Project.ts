@@ -1,6 +1,6 @@
 export interface FullProject {
     project_data: ProjectData;
-    client_data: ClientData;
+    client_data?: ClientData;
     address_list: Address[];
     product_list: Product[];
     service_list: Service[];
