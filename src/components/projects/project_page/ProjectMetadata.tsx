@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { ProjectData } from '@/entities/projects/Project';
 import { projectMetadataStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
 
@@ -59,6 +59,16 @@ export default function ProjectMetadata({ projectData }: ProjectMetadataProps) {
             {projectData.observations ? (
                 <Text style={styles.observations}>Obs: {projectData.observations}</Text>
             ) : null}
+
+            {/* Botão de edição */}
+            <TouchableOpacity
+                style={styles.editButton}
+                onPress={() => {
+                    // TODO: implementar edição
+                }}
+            >
+                <Text style={styles.editButtonText}>Atualizar informações</Text>
+            </TouchableOpacity>
         </View>
     );
 }

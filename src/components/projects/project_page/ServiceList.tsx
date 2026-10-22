@@ -86,8 +86,18 @@ export default function ServiceList({ services }: ServiceListProps) {
                                 {service.observations ? (
                                     <Text style={styles.serviceObs}>{service.observations}</Text>
                                 ) : null}
+
+                                {/* Botão de editar serviço */}
+                                <TouchableOpacity style={styles.editButton}>
+                                    <Text style={styles.editButtonText}>Editar serviço</Text>
+                                </TouchableOpacity>
                             </View>
                         ))}
+
+                        {/* Botão de adicionar serviço */}
+                        <TouchableOpacity style={styles.editButton}>
+                            <Text style={styles.editButtonText}>+ Novo serviço</Text>
+                        </TouchableOpacity>
                     </View>
                 </>
             )}

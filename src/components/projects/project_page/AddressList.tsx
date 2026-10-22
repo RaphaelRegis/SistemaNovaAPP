@@ -71,8 +71,17 @@ export default function AddressList({ addresses }: AddressListProps) {
                             >
                                 <Text style={styles.addressCity}>{address.city}</Text>
                                 <Text style={styles.addressText}>{address.address}</Text>
+                                <TouchableOpacity style={styles.editButton}>
+                                    <Text style={styles.editButtonText}>Editar endereço</Text>
+                                </TouchableOpacity>
                             </View>
                         ))}
+
+                        {/* Botão de adicionar endereço */}
+                        <TouchableOpacity style={styles.editButton}>
+                            <Text style={styles.editButtonText}>+ Novo endereço</Text>
+                        </TouchableOpacity>
+
                     </View>
                 </>
             )}

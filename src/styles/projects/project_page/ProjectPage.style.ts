@@ -99,6 +99,20 @@ export const projectMetadataStyles = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: '#f0f0f0',
     },
+    editButton: {
+        marginTop: 12,
+        backgroundColor: '#f8f9fa',
+        paddingVertical: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+    },
+    editButtonText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#343a40',
+        textAlign: 'center',
+    },
 });
 
 /* ─── Seção colapsável genérica ─── */
@@ -199,6 +213,20 @@ export const clientDataStyles = StyleSheet.create({
         color: '#333',
         flex: 1,
     },
+    editButton: {
+        marginTop: 12,
+        backgroundColor: '#f8f9fa',
+        paddingVertical: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+    },
+    editButtonText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#343a40',
+        textAlign: 'center',
+    },
 });
 
 /* ─── AddressList ─── */
@@ -217,6 +245,20 @@ export const addressListStyles = StyleSheet.create({
     addressText: {
         fontSize: 13,
         color: '#666',
+    },
+    editButton: {
+        marginTop: 12,
+        backgroundColor: '#f8f9fa',
+        paddingVertical: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+    },
+    editButtonText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#343a40',
+        textAlign: 'center',
     },
 });
 
@@ -286,6 +328,20 @@ export const productListStyles = StyleSheet.create({
         color: '#999',
         fontStyle: 'italic',
     },
+    editButton: {
+        marginTop: 12,
+        backgroundColor: '#f8f9fa',
+        paddingVertical: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+    },
+    editButtonText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#343a40',
+        textAlign: 'center',
+    },
 });
 
 /* ─── ServiceList ─── */
@@ -340,6 +396,20 @@ export const serviceListStyles = StyleSheet.create({
         fontSize: 12,
         color: '#999',
         fontStyle: 'italic',
+    },
+    editButton: {
+        marginTop: 12,
+        backgroundColor: '#f8f9fa',
+        paddingVertical: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+    },
+    editButtonText: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#343a40',
+        textAlign: 'center',
     },
 });
 

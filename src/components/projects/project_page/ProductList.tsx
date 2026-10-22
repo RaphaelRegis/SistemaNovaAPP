@@ -108,8 +108,17 @@ export default function ProductList({ products }: ProductListProps) {
                                 {product.observations ? (
                                     <Text style={styles.productObs}>{product.observations}</Text>
                                 ) : null}
+                                {/* Botão de editar produto */}
+                                <TouchableOpacity style={styles.editButton}>
+                                    <Text style={styles.editButtonText}>Editar produto</Text>
+                                </TouchableOpacity>
                             </View>
                         ))}
+
+                        {/* Botão de adicionar produto */}
+                        <TouchableOpacity style={styles.editButton}>
+                            <Text style={styles.editButtonText}>+ Novo produto</Text>
+                        </TouchableOpacity>
                     </View>
                 </>
             )}

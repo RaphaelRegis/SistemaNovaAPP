@@ -60,6 +60,10 @@ export default function ClientDataView({ clientData }: ClientDataProps) {
                             <Text style={clientDataStyles.label}>WhatsApp</Text>
                             <Text style={clientDataStyles.value}>{clientData.whatsapp_contact || '—'}</Text>
                         </View>
+                        {/* Botão de edição */}
+                        <TouchableOpacity style={clientDataStyles.editButton}>
+                            <Text style={clientDataStyles.editButtonText}>Editar cliente</Text>
+                        </TouchableOpacity>
                     </View>
                 </>
             )}

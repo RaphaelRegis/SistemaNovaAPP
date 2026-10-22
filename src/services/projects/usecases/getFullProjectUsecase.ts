@@ -44,6 +44,19 @@ export const getFullProjectUsecase = {
                     price: "200.00",
                     observations: "",
                     done: false
+                },
+                {
+                    id: "2",
+                    name: "Porta",
+                    heights: [
+                        "2.10"
+                    ],
+                    widths: [
+                        "0.90"
+                    ],
+                    price: "300.00",
+                    observations: "",
+                    done: false
                 }
             ],
             service_list: [
@@ -51,6 +64,13 @@ export const getFullProjectUsecase = {
                     id: "1",
                     description: "corrigir vazamento box",
                     price: "150.00",
+                    observations: "",
+                    done: false
+                },
+                {
+                    id: "2",
+                    description: "regular porta",
+                    price: "100.00",
                     observations: "",
                     done: false
                 }
