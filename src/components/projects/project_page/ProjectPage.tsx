@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, ActivityIndicator, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import ProjectMetadata from './ProjectMetadata';
+import ProjectMetadata from './ProjectMetadata/ProjectMetadata';
 import ClientData from './ClientData';
 import AddressList from './AddressList';
 import ProductList from './ProductList';
