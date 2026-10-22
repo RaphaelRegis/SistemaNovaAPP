@@ -6,7 +6,10 @@ import {
     clientDataStyles,
 } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
-import ClientDataForm from './forms/ClientDataForm';
+import ClientDataForm from './ClientDataForm';
+import ClientDataEmptyState from './ClientDataEmptyState';
+import ClientDataCompleteState from './ClientDataCompleteState';
+import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -53,18 +56,7 @@ export default function ClientDataView({ clientData, onUpdate }: ClientDataProps
 
                 {/* Estado vazio: botão para adicionar */}
                 {!clientData && (
-                    <>
-                        <View style={sectionStyles.divider} />
-                        <View style={sectionStyles.emptyContainer}>
-                            <Text style={sectionStyles.emptyText}>Nenhum cliente cadastrado.</Text>
-                            <TouchableOpacity
-                                style={[sectionStyles.addButton, { opacity: 1 }]}
-                                onPress={() => setModalVisible(true)}
-                            >
-                                <Text style={sectionStyles.addButtonText}>+ Adicionar cliente</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </>
+                    <ClientDataEmptyState onAdd={() => setModalVisible(true)} />
                 )}
 
                 {/* Dados expandidos */}
@@ -72,21 +64,14 @@ export default function ClientDataView({ clientData, onUpdate }: ClientDataProps
                     <>
                         <View style={sectionStyles.divider} />
                         <View style={sectionStyles.body}>
-                            <View style={clientDataStyles.dataRow}>
-                                <Text style={clientDataStyles.label}>Nome</Text>
-                                <Text style={clientDataStyles.value}>{clientData.name}</Text>
-                            </View>
-                            <View style={clientDataStyles.dataRow}>
-                                <Text style={clientDataStyles.label}>WhatsApp</Text>
-                                <Text style={clientDataStyles.value}>{clientData.whatsapp_contact || '—'}</Text>
-                            </View>
+                            <ClientDataCompleteState
+                                clientData={clientData}
+                            />
                             {/* Botão de edição */}
-                            <TouchableOpacity
-                                style={clientDataStyles.editButton}
+                            <ProjectPageCommonEditButton
                                 onPress={() => setModalVisible(true)}
-                            >
-                                <Text style={clientDataStyles.editButtonText}>Editar cliente</Text>
-                            </TouchableOpacity>
+                                text="Editar cliente"
+                            />
                         </View>
                     </>
                 )}
