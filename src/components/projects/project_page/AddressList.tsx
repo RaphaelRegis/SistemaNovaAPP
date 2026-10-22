@@ -5,6 +5,8 @@ import {
     sectionStyles,
     addressListStyles as styles,
 } from '@/styles/projects/project_page/ProjectPage.style';
+import EditModal from '@/components/common/modal/EditModal';
+import AddressForm from './forms/AddressForm';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -12,11 +14,16 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 interface AddressListProps {
     addresses: Address[];
+    onUpdate?: (addresses: Address[]) => void;
 }
 
-export default function AddressList({ addresses }: AddressListProps) {
+export default function AddressList({ addresses, onUpdate }: AddressListProps) {
     const [expanded, setExpanded] = useState(false);
     const isEmpty = addresses.length === 0;
+
+    /* Modal state: null = fechado; 'new' = novo; Address = editar existente */
+    const [editingAddress, setEditingAddress] = useState<Address | null | 'new'>(null);
+    const modalVisible = editingAddress !== null;
 
     const toggle = useCallback(() => {
         if (isEmpty) return;
@@ -24,67 +31,103 @@ export default function AddressList({ addresses }: AddressListProps) {
         setExpanded((prev) => !prev);
     }, [isEmpty]);
 
+    const handleConfirm = (data: Address) => {
+        if (!onUpdate) { setEditingAddress(null); return; }
+
+        if (editingAddress === 'new') {
+            onUpdate([...addresses, { ...data, id: Date.now().toString() }]);
+        } else {
+            onUpdate(addresses.map((a) => (a.id === data.id ? data : a)));
+        }
+        setEditingAddress(null);
+    };
+
+    const initialFormData: Address | null =
+        editingAddress === 'new' ? null : (editingAddress as Address | null);
+
     return (
-        <View style={sectionStyles.wrapper}>
-            <TouchableOpacity
-                style={sectionStyles.header}
-                onPress={toggle}
-                activeOpacity={isEmpty ? 1 : 0.7}
-            >
-                <View style={sectionStyles.headerLeft}>
-                    <Text style={sectionStyles.headerTitle}>Endereços</Text>
+        <>
+            <View style={sectionStyles.wrapper}>
+                <TouchableOpacity
+                    style={sectionStyles.header}
+                    onPress={toggle}
+                    activeOpacity={isEmpty ? 1 : 0.7}
+                >
+                    <View style={sectionStyles.headerLeft}>
+                        <Text style={sectionStyles.headerTitle}>Endereços</Text>
+                        {!isEmpty && (
+                            <Text style={sectionStyles.headerCount}>({addresses.length})</Text>
+                        )}
+                        {isEmpty && (
+                            <Text style={sectionStyles.headerCount}>(nenhum cadastrado)</Text>
+                        )}
+                    </View>
                     {!isEmpty && (
-                        <Text style={sectionStyles.headerCount}>({addresses.length})</Text>
+                        <Text style={sectionStyles.chevron}>{expanded ? '▲' : '▼'}</Text>
                     )}
-                    {isEmpty && (
-                        <Text style={sectionStyles.headerCount}>(nenhum cadastrado)</Text>
-                    )}
-                </View>
-                {!isEmpty && (
-                    <Text style={sectionStyles.chevron}>{expanded ? '▲' : '▼'}</Text>
-                )}
-            </TouchableOpacity>
+                </TouchableOpacity>
 
-            {isEmpty && (
-                <>
-                    <View style={sectionStyles.divider} />
-                    <View style={sectionStyles.emptyContainer}>
-                        <Text style={sectionStyles.emptyText}>Nenhum endereço cadastrado.</Text>
-                        <TouchableOpacity style={sectionStyles.addButton} disabled>
-                            <Text style={sectionStyles.addButtonText}>+ Adicionar endereço</Text>
-                        </TouchableOpacity>
-                    </View>
-                </>
-            )}
-
-            {!isEmpty && expanded && (
-                <>
-                    <View style={sectionStyles.divider} />
-                    <View style={sectionStyles.body}>
-                        {addresses.map((address, index) => (
-                            <View
-                                key={address.id}
-                                style={[
-                                    styles.addressItem,
-                                    index === addresses.length - 1 && { borderBottomWidth: 0 },
-                                ]}
+                {/* Estado vazio */}
+                {isEmpty && (
+                    <>
+                        <View style={sectionStyles.divider} />
+                        <View style={sectionStyles.emptyContainer}>
+                            <Text style={sectionStyles.emptyText}>Nenhum endereço cadastrado.</Text>
+                            <TouchableOpacity
+                                style={[sectionStyles.addButton, { opacity: 1 }]}
+                                onPress={() => setEditingAddress('new')}
                             >
-                                <Text style={styles.addressCity}>{address.city}</Text>
-                                <Text style={styles.addressText}>{address.address}</Text>
-                                <TouchableOpacity style={styles.editButton}>
-                                    <Text style={styles.editButtonText}>Editar endereço</Text>
-                                </TouchableOpacity>
-                            </View>
-                        ))}
+                                <Text style={sectionStyles.addButtonText}>+ Adicionar endereço</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </>
+                )}
 
-                        {/* Botão de adicionar endereço */}
-                        <TouchableOpacity style={styles.editButton}>
-                            <Text style={styles.editButtonText}>+ Novo endereço</Text>
-                        </TouchableOpacity>
+                {/* Lista expandida */}
+                {!isEmpty && expanded && (
+                    <>
+                        <View style={sectionStyles.divider} />
+                        <View style={sectionStyles.body}>
+                            {addresses.map((address, index) => (
+                                <View
+                                    key={address.id}
+                                    style={[
+                                        styles.addressItem,
+                                        index === addresses.length - 1 && { borderBottomWidth: 0 },
+                                    ]}
+                                >
+                                    <Text style={styles.addressCity}>{address.city}</Text>
+                                    <Text style={styles.addressText}>{address.address}</Text>
+                                    <TouchableOpacity
+                                        style={styles.editButton}
+                                        onPress={() => setEditingAddress(address)}
+                                    >
+                                        <Text style={styles.editButtonText}>Editar endereço</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            ))}
 
-                    </View>
-                </>
-            )}
-        </View>
+                            {/* Botão de adicionar endereço */}
+                            <TouchableOpacity
+                                style={styles.editButton}
+                                onPress={() => setEditingAddress('new')}
+                            >
+                                <Text style={styles.editButtonText}>+ Novo endereço</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </>
+                )}
+            </View>
+
+            <EditModal
+                title={editingAddress === 'new' ? 'Novo endereço' : 'Editar endereço'}
+                visible={modalVisible}
+                onClose={() => setEditingAddress(null)}
+            >
+                {modalVisible && (
+                    <AddressForm initialData={initialFormData} onConfirm={handleConfirm} />
+                )}
+            </EditModal>
+        </>
     );
 }
