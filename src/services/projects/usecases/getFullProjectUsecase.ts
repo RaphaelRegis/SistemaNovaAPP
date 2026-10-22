@@ -29,6 +29,11 @@ export const getFullProjectUsecase = {
                     id: "1",
                     city: "Boa Nova",
                     address: "Rua Padre Vicente, numero 2"
+                },
+                {
+                    id: "2",
+                    city: "Jequié",
+                    address: "Rua Rio de Janeiro, 250"
                 }
             ],
             product_list: [

@@ -6,18 +6,21 @@ import {
     addressListStyles as styles,
 } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
-import AddressForm from './forms/AddressForm';
+import AddressForm from './AddressDataForm';
+import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';
+import AddressDataAddressList from './AddressDataAddressList';
+import AddressDataEmptyListState from './AddressDataEmptyListState';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-interface AddressListProps {
+interface AddressDataProps {
     addresses: Address[];
     onUpdate?: (addresses: Address[]) => void;
 }
 
-export default function AddressList({ addresses, onUpdate }: AddressListProps) {
+export default function AddressData({ addresses, onUpdate }: AddressDataProps) {
     const [expanded, setExpanded] = useState(false);
     const isEmpty = addresses.length === 0;
 
@@ -69,18 +72,7 @@ export default function AddressList({ addresses, onUpdate }: AddressListProps) {
 
                 {/* Estado vazio */}
                 {isEmpty && (
-                    <>
-                        <View style={sectionStyles.divider} />
-                        <View style={sectionStyles.emptyContainer}>
-                            <Text style={sectionStyles.emptyText}>Nenhum endereço cadastrado.</Text>
-                            <TouchableOpacity
-                                style={[sectionStyles.addButton, { opacity: 1 }]}
-                                onPress={() => setEditingAddress('new')}
-                            >
-                                <Text style={sectionStyles.addButtonText}>+ Adicionar endereço</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </>
+                    <AddressDataEmptyListState onAdd={() => setEditingAddress('new')} />
                 )}
 
                 {/* Lista expandida */}
@@ -88,32 +80,16 @@ export default function AddressList({ addresses, onUpdate }: AddressListProps) {
                     <>
                         <View style={sectionStyles.divider} />
                         <View style={sectionStyles.body}>
-                            {addresses.map((address, index) => (
-                                <View
-                                    key={address.id}
-                                    style={[
-                                        styles.addressItem,
-                                        index === addresses.length - 1 && { borderBottomWidth: 0 },
-                                    ]}
-                                >
-                                    <Text style={styles.addressCity}>{address.city}</Text>
-                                    <Text style={styles.addressText}>{address.address}</Text>
-                                    <TouchableOpacity
-                                        style={styles.editButton}
-                                        onPress={() => setEditingAddress(address)}
-                                    >
-                                        <Text style={styles.editButtonText}>Editar endereço</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            ))}
+                            <AddressDataAddressList
+                                addresses={addresses}
+                                onUpdate={(a) => setEditingAddress(a)}
+                            />
 
                             {/* Botão de adicionar endereço */}
-                            <TouchableOpacity
-                                style={styles.editButton}
+                            <ProjectPageCommonEditButton
                                 onPress={() => setEditingAddress('new')}
-                            >
-                                <Text style={styles.editButtonText}>+ Novo endereço</Text>
-                            </TouchableOpacity>
+                                text="Novo endereço"
+                            />
                         </View>
                     </>
                 )}

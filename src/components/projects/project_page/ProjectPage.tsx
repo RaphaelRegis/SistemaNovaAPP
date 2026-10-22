@@ -3,7 +3,7 @@ import { View, ActivityIndicator, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import ProjectMetadata from './ProjectMetadata/ProjectMetadata';
 import ClientData from './ClientData/ClientData';
-import AddressList from './AddressList';
+import AddressData from './AddressList/AddressData';
 import ProductList from './ProductList';
 import ProjectActions from './ProjectActions';
 import { FullProject } from '@/entities/projects/Project';
@@ -32,7 +32,7 @@ export default function ProjectPage() {
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 <ProjectMetadata projectData={fullProject.project_data} />
                 <ClientData clientData={fullProject.client_data ?? null} />
-                <AddressList addresses={fullProject.address_list} />
+                <AddressData addresses={fullProject.address_list} />
                 <ProductList products={fullProject.product_list} />
                 <ServiceList services={fullProject.service_list} />
             </ScrollView>
