@@ -4,7 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import ProjectMetadata from './ProjectMetadata/ProjectMetadata';
 import ClientData from './ClientData/ClientData';
 import AddressData from './AddressList/AddressData';
-import ProductList from './ProductList';
+import ProductData from './ProductList/ProductData';
 import ProjectActions from './ProjectActions';
 import { FullProject } from '@/entities/projects/Project';
 import { mainService } from '@/services/projects/projects.service';
@@ -33,7 +33,7 @@ export default function ProjectPage() {
                 <ProjectMetadata projectData={fullProject.project_data} />
                 <ClientData clientData={fullProject.client_data ?? null} />
                 <AddressData addresses={fullProject.address_list} />
-                <ProductList products={fullProject.product_list} />
+                <ProductData products={fullProject.product_list} />
                 <ServiceList services={fullProject.service_list} />
             </ScrollView>
             <ProjectActions />
