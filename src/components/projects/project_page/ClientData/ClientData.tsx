@@ -10,6 +10,7 @@ import ClientDataForm from './ClientDataForm';
 import ClientDataEmptyState from './ClientDataEmptyState';
 import ClientDataCompleteState from './ClientDataCompleteState';
 import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';
+import ProjectPageCommonDropdown from '../common/ProjectPageCommonDropdown';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -38,21 +39,14 @@ export default function ClientDataView({ clientData, onUpdate }: ClientDataProps
     return (
         <>
             <View style={sectionStyles.wrapper}>
-                <TouchableOpacity
-                    style={sectionStyles.header}
+
+                <ProjectPageCommonDropdown
+                    title="Cliente"
+                    count={clientData ? 1 : undefined}
                     onPress={toggle}
-                    activeOpacity={clientData ? 0.7 : 1}
-                >
-                    <View style={sectionStyles.headerLeft}>
-                        <Text style={sectionStyles.headerTitle}>Cliente</Text>
-                        {!clientData && (
-                            <Text style={sectionStyles.headerCount}>(não cadastrado)</Text>
-                        )}
-                    </View>
-                    {clientData && (
-                        <Text style={sectionStyles.chevron}>{expanded ? '▲' : '▼'}</Text>
-                    )}
-                </TouchableOpacity>
+                    expanded={expanded}
+                    chevron={clientData !== null}
+                />
 
                 {/* Estado vazio: botão para adicionar */}
                 {!clientData && (

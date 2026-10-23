@@ -10,6 +10,7 @@ import AddressForm from './AddressDataForm';
 import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';
 import AddressDataAddressList from './AddressDataAddressList';
 import AddressDataEmptyListState from './AddressDataEmptyListState';
+import ProjectPageCommonDropdown from '../common/ProjectPageCommonDropdown';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -51,24 +52,13 @@ export default function AddressData({ addresses, onUpdate }: AddressDataProps) {
     return (
         <>
             <View style={sectionStyles.wrapper}>
-                <TouchableOpacity
-                    style={sectionStyles.header}
+                <ProjectPageCommonDropdown
+                    title="Endereços"
+                    count={addresses.length}
                     onPress={toggle}
-                    activeOpacity={isEmpty ? 1 : 0.7}
-                >
-                    <View style={sectionStyles.headerLeft}>
-                        <Text style={sectionStyles.headerTitle}>Endereços</Text>
-                        {!isEmpty && (
-                            <Text style={sectionStyles.headerCount}>({addresses.length})</Text>
-                        )}
-                        {isEmpty && (
-                            <Text style={sectionStyles.headerCount}>(nenhum cadastrado)</Text>
-                        )}
-                    </View>
-                    {!isEmpty && (
-                        <Text style={sectionStyles.chevron}>{expanded ? '▲' : '▼'}</Text>
-                    )}
-                </TouchableOpacity>
+                    expanded={expanded}
+                    chevron={!isEmpty}
+                />
 
                 {/* Estado vazio */}
                 {isEmpty && (

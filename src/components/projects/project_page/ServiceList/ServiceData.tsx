@@ -10,6 +10,7 @@ import ServiceForm from './ServiceDataForm';
 import ServiceDataEmptyListState from './ServiceDataEmptyListState';
 import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';
 import ServiceDataServiceList from './ServiceDataServiceList';
+import ProjectPageCommonDropdown from '../common/ProjectPageCommonDropdown';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -51,24 +52,13 @@ export default function ServiceData({ services, onUpdate }: ServiceListProps) {
     return (
         <>
             <View style={sectionStyles.wrapper}>
-                <TouchableOpacity
-                    style={sectionStyles.header}
+                <ProjectPageCommonDropdown
+                    title="Serviços"
+                    count={services.length}
                     onPress={toggle}
-                    activeOpacity={isEmpty ? 1 : 0.7}
-                >
-                    <View style={sectionStyles.headerLeft}>
-                        <Text style={sectionStyles.headerTitle}>Serviços</Text>
-                        {!isEmpty && (
-                            <Text style={sectionStyles.headerCount}>({services.length})</Text>
-                        )}
-                        {isEmpty && (
-                            <Text style={sectionStyles.headerCount}>(nenhum cadastrado)</Text>
-                        )}
-                    </View>
-                    {!isEmpty && (
-                        <Text style={sectionStyles.chevron}>{expanded ? '▲' : '▼'}</Text>
-                    )}
-                </TouchableOpacity>
+                    expanded={expanded}
+                    chevron
+                />
 
                 {/* Estado vazio */}
                 {isEmpty && (
