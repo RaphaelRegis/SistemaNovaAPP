@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
-import ProjectsActions from './ProjectsActions';
-import ProjectList from './ProjectList';
-import ProjectsSearchArea from './ProjectsSearchArea';
+import ProjectsActions from './ProjectActions/ProjectsActions';
+import ProjectList from './ProjectList/ProjectList';
 import { ProjectData } from '@/entities/projects/Project';
 import { mainService } from '@/services/projects/projects.service';
 import { SearchPayload } from '@/entities/common/search_tools/SearchConfig';
 import { projectMainStyles as styles, DefaultProjectMainContainer } from '@/styles/projects/projects_main/ProjectMain.style';
+import ProjectsSearchArea from './ProjectSearchArea/ProjectsSearchArea';
 
 export default function ProjectsMain() {
     const [projectList, setProjectList] = useState<ProjectData[]>([]);
