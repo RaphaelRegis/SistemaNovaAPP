@@ -8,7 +8,7 @@ import ProductData from './ProductList/ProductData';
 import ProjectActions from './ProjectActions';
 import { FullProject } from '@/entities/projects/Project';
 import { mainService } from '@/services/projects/projects.service';
-import ServiceList from './ServiceList';
+import ServiceData from './ServiceList/ServiceData';
 import { projectPageStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
 
 export default function ProjectPage() {
@@ -34,7 +34,7 @@ export default function ProjectPage() {
                 <ClientData clientData={fullProject.client_data ?? null} />
                 <AddressData addresses={fullProject.address_list} />
                 <ProductData products={fullProject.product_list} />
-                <ServiceList services={fullProject.service_list} />
+                <ServiceData services={fullProject.service_list} />
             </ScrollView>
             <ProjectActions />
         </View>

@@ -6,7 +6,10 @@ import {
     serviceListStyles as styles,
 } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
-import ServiceForm from './forms/ServiceForm';
+import ServiceForm from './ServiceDataForm';
+import ServiceDataEmptyListState from './ServiceDataEmptyListState';
+import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';
+import ServiceDataServiceList from './ServiceDataServiceList';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -17,7 +20,7 @@ interface ServiceListProps {
     onUpdate?: (services: Service[]) => void;
 }
 
-export default function ServiceList({ services, onUpdate }: ServiceListProps) {
+export default function ServiceData({ services, onUpdate }: ServiceListProps) {
     const [expanded, setExpanded] = useState(false);
     const isEmpty = services.length === 0;
 
@@ -69,18 +72,7 @@ export default function ServiceList({ services, onUpdate }: ServiceListProps) {
 
                 {/* Estado vazio */}
                 {isEmpty && (
-                    <>
-                        <View style={sectionStyles.divider} />
-                        <View style={sectionStyles.emptyContainer}>
-                            <Text style={sectionStyles.emptyText}>Nenhum serviço cadastrado.</Text>
-                            <TouchableOpacity
-                                style={[sectionStyles.addButton, { opacity: 1 }]}
-                                onPress={() => setEditingService('new')}
-                            >
-                                <Text style={sectionStyles.addButtonText}>+ Adicionar serviço</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </>
+                    <ServiceDataEmptyListState onClick={() => setEditingService('new')} />
                 )}
 
                 {/* Lista expandida */}
@@ -88,49 +80,15 @@ export default function ServiceList({ services, onUpdate }: ServiceListProps) {
                     <>
                         <View style={sectionStyles.divider} />
                         <View style={sectionStyles.body}>
-                            {services.map((service, index) => (
-                                <View
-                                    key={service.id}
-                                    style={[
-                                        styles.serviceItem,
-                                        index === services.length - 1 && { borderBottomWidth: 0 },
-                                    ]}
-                                >
-                                    {/* Descrição + Preço */}
-                                    <View style={styles.serviceHeader}>
-                                        <Text style={styles.serviceDescription}>{service.description}</Text>
-                                        <Text style={styles.servicePrice}>R$ {service.price}</Text>
-                                    </View>
-
-                                    {/* Status */}
-                                    <View style={service.done ? styles.serviceDoneTag : styles.servicePendingTag}>
-                                        <Text style={service.done ? styles.serviceDoneTagText : styles.servicePendingTagText}>
-                                            {service.done ? '✓ Concluído' : '⏳ Pendente'}
-                                        </Text>
-                                    </View>
-
-                                    {/* Observações */}
-                                    {service.observations ? (
-                                        <Text style={styles.serviceObs}>{service.observations}</Text>
-                                    ) : null}
-
-                                    {/* Botão de editar serviço */}
-                                    <TouchableOpacity
-                                        style={styles.editButton}
-                                        onPress={() => setEditingService(service)}
-                                    >
-                                        <Text style={styles.editButtonText}>Editar serviço</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            ))}
-
+                            <ServiceDataServiceList
+                                services={services}
+                                onUpdate={(service) => setEditingService(service)}
+                            />
                             {/* Botão de adicionar serviço */}
-                            <TouchableOpacity
-                                style={styles.editButton}
+                            <ProjectPageCommonEditButton
                                 onPress={() => setEditingService('new')}
-                            >
-                                <Text style={styles.editButtonText}>+ Novo serviço</Text>
-                            </TouchableOpacity>
+                                text='Novo serviço'
+                            />
                         </View>
                     </>
                 )}
