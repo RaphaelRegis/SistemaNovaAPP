@@ -5,7 +5,7 @@ import ProjectMetadata from './ProjectMetadata/ProjectMetadata';
 import ClientData from './ClientData/ClientData';
 import AddressData from './AddressList/AddressData';
 import ProductData from './ProductList/ProductData';
-import ProjectActions from './ProjectActions';
+import ProjectActions from './ProjectActions/ProjectActions';
 import { FullProject } from '@/entities/projects/Project';
 import { mainService } from '@/services/projects/projects.service';
 import ServiceData from './ServiceList/ServiceData';
