@@ -39,31 +39,34 @@ export const getFullProjectUsecase = {
             product_list: [
                 {
                     id: "1",
-                    name: "Janela",
-                    heights: [
-                        "1.10"
-                    ],
-                    widths: [
-                        "0.80"
-                    ],
+                    product_type: "janela" as const,
+                    name: "Janela 2 Folhas",
+                    janela_data: {
+                        variant: "duasFolhas" as const,
+                        heights: ["1.10"],
+                        widths: ["0.80"],
+                        corMaterial: "Branco" as const,
+                        tipoVidro: "Normal" as const,
+                        corVidro: "Transparente" as const,
+                    },
+                    heights: [],
+                    widths: [],
                     price: "200.00",
                     observations: "",
                     done: false
                 },
                 {
                     id: "2",
+                    product_type: "generic" as const,
                     name: "Porta",
-                    heights: [
-                        "2.10"
-                    ],
-                    widths: [
-                        "0.90"
-                    ],
+                    heights: ["2.10"],
+                    widths: ["0.90"],
                     price: "300.00",
                     observations: "",
                     done: false
                 }
             ],
+
             service_list: [
                 {
                     id: "1",

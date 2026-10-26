@@ -2,6 +2,7 @@ import { Product } from "@/entities/projects/Project";
 import { productListStyles as styles } from "@/styles/projects/project_page/ProjectPage.style";
 import { Text, View } from "react-native";
 import ProjectPageCommonEditButton from "../common/ProjectPageCommonEditButton";
+import JanelaListItem from "./productVariations/janela/JanelaListItem";
 
 interface ProductDataProductListProps {
     products: Product[];
@@ -25,26 +26,31 @@ export default function ProductDataProductList({ products, onUpdate }: ProductDa
                         <Text style={styles.productPrice}>R$ {product.price}</Text>
                     </View>
 
-                    {/* Dimensões */}
-                    {(product.heights.length > 0 || product.widths.length > 0) && (
-                        <View style={styles.productDimRow}>
-                            {product.heights.length > 0 && (
-                                <Text>
-                                    <Text style={styles.productDimLabel}>Alt: </Text>
-                                    <Text style={styles.productDimValue}>
-                                        {product.heights.join(', ')} m
+                    {/* Detalhes específicos por tipo */}
+                    {product.product_type === 'janela' && product.janela_data ? (
+                        <JanelaListItem data={product.janela_data} />
+                    ) : (
+                        /* Exibição genérica: alturas e larguras livres */
+                        (product.heights.length > 0 || product.widths.length > 0) && (
+                            <View style={styles.productDimRow}>
+                                {product.heights.length > 0 && (
+                                    <Text>
+                                        <Text style={styles.productDimLabel}>Alt: </Text>
+                                        <Text style={styles.productDimValue}>
+                                            {product.heights.join(', ')} m
+                                        </Text>
                                     </Text>
-                                </Text>
-                            )}
-                            {product.widths.length > 0 && (
-                                <Text>
-                                    <Text style={styles.productDimLabel}>Larg: </Text>
-                                    <Text style={styles.productDimValue}>
-                                        {product.widths.join(', ')} m
+                                )}
+                                {product.widths.length > 0 && (
+                                    <Text>
+                                        <Text style={styles.productDimLabel}>Larg: </Text>
+                                        <Text style={styles.productDimValue}>
+                                            {product.widths.join(', ')} m
+                                        </Text>
                                     </Text>
-                                </Text>
-                            )}
-                        </View>
+                                )}
+                            </View>
+                        )
                     )}
 
                     {/* Status */}
@@ -64,8 +70,6 @@ export default function ProductDataProductList({ products, onUpdate }: ProductDa
                         onPress={() => onUpdate(product)}
                         text="Editar produto"
                     />
-
-
                 </View>
             ))}
         </>

@@ -123,6 +123,71 @@ export const formStyles = StyleSheet.create({
         marginVertical: 16,
     },
 
+    /* ── Dropdown de seleção ── */
+    dropdownButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#f8f9fa',
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+        borderRadius: 10,
+        paddingHorizontal: 14,
+        paddingVertical: 12,
+    },
+    dropdownButtonText: {
+        fontSize: 14,
+        color: '#1a1a2e',
+        fontWeight: '500',
+    },
+    dropdownButtonPlaceholder: {
+        fontSize: 14,
+        color: '#bbb',
+    },
+    dropdownArrow: {
+        fontSize: 11,
+        color: '#aaa',
+    },
+    dropdownOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 10,
+    },
+    dropdownMenu: {
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#e9ecef',
+        marginTop: 4,
+        zIndex: 20,
+        overflow: 'hidden',
+        shadowColor: '#000',
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 4 },
+        elevation: 4,
+    },
+    dropdownItem: {
+        paddingHorizontal: 14,
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f4f4f4',
+    },
+    dropdownItemSelected: {
+        backgroundColor: '#eef5fd',
+    },
+    dropdownItemText: {
+        fontSize: 14,
+        color: '#333',
+    },
+    dropdownItemTextSelected: {
+        color: '#4a90e2',
+        fontWeight: '600',
+    },
+
     /* ── Botão de confirmação ── */
     confirmButton: {
         backgroundColor: '#4a90e2',
@@ -131,6 +196,9 @@ export const formStyles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 8,
         marginBottom: 4,
+    },
+    confirmButtonDisabled: {
+        backgroundColor: '#b0c8ef',
     },
     confirmButtonText: {
         color: '#fff',
