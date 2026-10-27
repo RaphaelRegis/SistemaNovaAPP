@@ -1,34 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const searchBarStyles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        gap: 8,
-    },
-    input: {
-        flex: 1,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        paddingHorizontal: 12,
-        paddingVertical: 8,
-        fontSize: 14,
-    },
-    button: {
-        backgroundColor: '#4a90e2',
-        borderRadius: 8,
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        justifyContent: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: '600',
-        fontSize: 14,
-    },
-});
-
-export const searchFiltersStyles = StyleSheet.create({
+export const defaultSearchFiltersStyles = StyleSheet.create({
     container: {
         gap: 8,
     },
@@ -78,6 +50,3 @@ export const searchFiltersStyles = StyleSheet.create({
         fontSize: 13,
     },
 });
-
-export const DefaultSearchBarContainer = searchBarStyles.container;
-export const DefaultSearchFiltersContainer = searchFiltersStyles.container;

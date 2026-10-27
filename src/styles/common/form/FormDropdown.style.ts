@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const overlayStyle = StyleSheet.create({
+const formDropdownStyle = StyleSheet.create({
     backdrop: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.25)',
@@ -13,5 +13,5 @@ const overlayStyle = StyleSheet.create({
     },
 });
 
-export const DefaultOverlayStyle = overlayStyle.backdrop;
-export const DefaultOverlayMenuStyle = overlayStyle.menuWrapper;
+export const DefaultBackdropContainer = formDropdownStyle.backdrop;
+export const DefaultMenuContainer = formDropdownStyle.menuWrapper;

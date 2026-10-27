@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const bottomBarStyles = StyleSheet.create({
+const bottomBarStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: '#fff',

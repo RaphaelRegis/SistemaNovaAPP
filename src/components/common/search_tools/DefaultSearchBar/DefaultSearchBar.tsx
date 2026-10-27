@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import { SearchBarConfig, SearchPayload, FilterValues } from '@/entities/common/search_tools/SearchConfig';
-import { searchBarStyles as styles } from '@/styles/common/search_tools/SearchTools.style';
+import { defaultSearchBarStyles } from '@/styles/common/search_tools/DefaultSearchBar.style';
 
 interface DefaultSearchBarProps {
     config: SearchBarConfig;
@@ -17,17 +17,17 @@ export default function DefaultSearchBar({ config, currentFilters, onSearch }: D
     }, [query, currentFilters, onSearch]);
 
     return (
-        <View style={styles.container}>
+        <View style={defaultSearchBarStyles.container}>
             <TextInput
-                style={styles.input}
+                style={defaultSearchBarStyles.input}
                 placeholder={config.placeholder}
                 value={query}
                 onChangeText={setQuery}
                 onSubmitEditing={handleSearch}
                 returnKeyType="search"
             />
-            <TouchableOpacity style={styles.button} onPress={handleSearch}>
-                <Text style={styles.buttonText}>Buscar</Text>
+            <TouchableOpacity style={defaultSearchBarStyles.button} onPress={handleSearch}>
+                <Text style={defaultSearchBarStyles.buttonText}>Buscar</Text>
             </TouchableOpacity>
         </View>
     );

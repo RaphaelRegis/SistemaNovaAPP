@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { DefaultHeaderContainer, DefaultHeaderTitle } from '@/styles/common/header/Header.style';
+import { DefaultHeaderContainer, DefaultHeaderTitleContainer } from '@/styles/common/header/Header.style';
 
 interface DefaultHeaderProps {
     title?: string;
@@ -9,7 +9,7 @@ interface DefaultHeaderProps {
 export default function DefaultHeader({ title = 'Sistema Nova' }: DefaultHeaderProps) {
     return (
         <View style={DefaultHeaderContainer}>
-            <Text style={DefaultHeaderTitle}>{title}</Text>
+            <Text style={DefaultHeaderTitleContainer}>{title}</Text>
         </View>
     );
 }

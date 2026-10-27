@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const headerStyles = StyleSheet.create({
+const headerStyles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
         paddingHorizontal: 16,
@@ -17,4 +17,4 @@ export const headerStyles = StyleSheet.create({
 });
 
 export const DefaultHeaderContainer = headerStyles.container;
-export const DefaultHeaderTitle = headerStyles.title;
+export const DefaultHeaderTitleContainer = headerStyles.title;

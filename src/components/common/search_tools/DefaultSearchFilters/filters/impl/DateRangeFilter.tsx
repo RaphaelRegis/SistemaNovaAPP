@@ -1,5 +1,5 @@
 import { FilterConfig } from "@/entities/common/search_tools/SearchConfig";
-import { searchFiltersStyles as styles } from "@/styles/common/search_tools/SearchTools.style";
+import { defaultSearchFiltersStyles } from "@/styles/common/search_tools/DefaultSearchFilters.style";
 import { Text, TextInput, View } from "react-native";
 
 function formatDateInput(text: string): string {
@@ -24,11 +24,11 @@ export default function DateRangeFilter({ filter, value, onUpdate }: { filter: F
     };
 
     return (
-        <View style={styles.filterGroup}>
-            <Text style={styles.filterLabel}>{filter.label}</Text>
-            <View style={styles.dateRow}>
+        <View style={defaultSearchFiltersStyles.filterGroup}>
+            <Text style={defaultSearchFiltersStyles.filterLabel}>{filter.label}</Text>
+            <View style={defaultSearchFiltersStyles.dateRow}>
                 <TextInput
-                    style={styles.dateInput}
+                    style={defaultSearchFiltersStyles.dateInput}
                     placeholder="De (dd/mm/aaaa)"
                     value={from}
                     onChangeText={handleFromChange}
@@ -36,7 +36,7 @@ export default function DateRangeFilter({ filter, value, onUpdate }: { filter: F
                     maxLength={10}
                 />
                 <TextInput
-                    style={styles.dateInput}
+                    style={defaultSearchFiltersStyles.dateInput}
                     placeholder="Até (dd/mm/aaaa)"
                     value={to}
                     onChangeText={handleToChange}
