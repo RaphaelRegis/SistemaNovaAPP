@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { PortaBaseData } from '../_shared/PortaBaseForm';
+import PortaBaseForm, { PortaBaseData, defaultPortaBaseData } from '../_shared/PortaBaseForm';
 
 export const VARIANT_KEY = 'pivotante' as const;
 export const VARIANT_LABEL = 'Porta Pivotante';
@@ -11,7 +10,5 @@ interface PivotanteFormProps {
 }
 
 export default function PivotanteForm({ initialData, onChange }: PivotanteFormProps) {
-    return (
-        <View></View>
-    );
+    return <PortaBaseForm data={initialData ?? defaultPortaBaseData()} onChange={onChange} />;
 }

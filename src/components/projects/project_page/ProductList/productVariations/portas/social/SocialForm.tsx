@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { PortaBaseData } from '../_shared/PortaBaseForm';
+import PortaBaseForm, { PortaBaseData, defaultPortaBaseData } from '../_shared/PortaBaseForm';
 
 export const VARIANT_KEY = 'social' as const;
 export const VARIANT_LABEL = 'Porta Social';
@@ -11,7 +10,5 @@ interface SocialFormProps {
 }
 
 export default function SocialForm({ initialData, onChange }: SocialFormProps) {
-    return (
-        <View></View>
-    );
+    return <PortaBaseForm data={initialData ?? defaultPortaBaseData()} onChange={onChange} />;
 }

@@ -1,9 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
-import { PortaBaseData } from '../_shared/PortaBaseForm';
+import PortaBaseForm, { PortaBaseData, defaultPortaBaseData } from '../_shared/PortaBaseForm';
 
 export const VARIANT_KEY = 'dobradica' as const;
-export const VARIANT_LABEL = 'Porta de Dobradiça';
+export const VARIANT_LABEL = 'Porta Dobradiça';
 
 interface DobradicaFormProps {
     initialData?: PortaBaseData;
@@ -11,7 +10,5 @@ interface DobradicaFormProps {
 }
 
 export default function DobradicaForm({ initialData, onChange }: DobradicaFormProps) {
-    return (
-        <View></View>
-    );
+    return <PortaBaseForm data={initialData ?? defaultPortaBaseData()} onChange={onChange} />;
 }

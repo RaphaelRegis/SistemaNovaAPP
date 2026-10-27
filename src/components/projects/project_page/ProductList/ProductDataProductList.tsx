@@ -3,6 +3,7 @@ import { productListStyles } from "@/styles/projects/project_page/ProductList.st
 import { Text, View } from "react-native";
 import ProjectPageCommonEditButton from "../common/ProjectPageCommonEditButton";
 import JanelaListItem from "./productVariations/janela/JanelaListItem";
+import PortaListItem from "./productVariations/portas/PortaListItem";
 
 interface ProductDataProductListProps {
     products: Product[];
@@ -29,6 +30,8 @@ export default function ProductDataProductList({ products, onUpdate }: ProductDa
                     {/* Detalhes específicos por tipo */}
                     {product.product_type === 'janela' && product.janela_data ? (
                         <JanelaListItem data={product.janela_data} />
+                    ) : product.product_type === 'porta' && product.porta_data ? (
+                        <PortaListItem data={product.porta_data} />
                     ) : (
                         /* Exibição genérica: alturas e larguras livres */
                         (product.heights.length > 0 || product.widths.length > 0) && (

@@ -7,11 +7,16 @@ import {
     JanelaVariantData,
     JanelaVariantKey,
     JANELA_VARIANTS,
+    PortaVariantData,
+    PortaVariantKey,
+    PORTA_VARIANTS,
 } from '@/entities/projects/Project';
 import { formStyles as styles } from '@/styles/common/form/EditForm.style';
 import FormDropdown from '@/components/common/form/FormDropdown';
 import JanelaForm from './productVariations/janela/JanelaForm';
 import { isJanelaBaseValid } from './productVariations/janela/_shared/JanelaBaseForm';
+import PortaForm from './productVariations/portas/PortaForm';
+import { isPortaBaseValid, defaultPortaBaseData } from './productVariations/portas/_shared/PortaBaseForm';
 
 interface ProductFormProps {
     initialData: Product | null;
@@ -19,14 +24,11 @@ interface ProductFormProps {
 }
 
 function defaultJanelaData(variant: JanelaVariantKey = 'duasFolhas'): JanelaVariantData {
-    return {
-        variant,
-        heights: [''],
-        widths: [''],
-        corMaterial: '',
-        tipoVidro: '',
-        corVidro: '',
-    };
+    return { variant, heights: [''], widths: [''], corMaterial: '', tipoVidro: '', corVidro: '' };
+}
+
+function defaultPortaData(variant: PortaVariantKey = 'social'): PortaVariantData {
+    return { variant, heights: [''], widths: [''], corMaterial: '', tipoVidro: '', corVidro: '' };
 }
 
 export default function ProductForm({ initialData, onConfirm }: ProductFormProps) {
@@ -35,14 +37,20 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
         initialData?.product_type ?? null
     );
 
-    /* ── Variante de janela (seleção intermediária) ── */
+    /* ── Variante de janela ── */
     const [janelaVariant, setJanelaVariant] = useState<JanelaVariantKey | null>(
         initialData?.janela_data?.variant ?? null
     );
-
-    /* ── Dados do form de janela ── */
     const [janelaData, setJanelaData] = useState<JanelaVariantData>(
         initialData?.janela_data ?? defaultJanelaData()
+    );
+
+    /* ── Variante de porta ── */
+    const [portaVariant, setPortaVariant] = useState<PortaVariantKey | null>(
+        initialData?.porta_data?.variant ?? null
+    );
+    const [portaData, setPortaData] = useState<PortaVariantData>(
+        initialData?.porta_data ?? defaultPortaData()
     );
 
     /* ── Campos genéricos ── */
@@ -55,69 +63,74 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
 
     /* ── Alturas / larguras genéricas ── */
     const updateHeight = (value: string, index: number) => {
-        const updated = [...heights];
-        updated[index] = value;
-        setHeights(updated);
+        const updated = [...heights]; updated[index] = value; setHeights(updated);
     };
     const addHeight = () => setHeights((prev) => [...prev, '']);
-    const removeHeight = (index: number) =>
-        setHeights((prev) => prev.filter((_, i) => i !== index));
+    const removeHeight = (index: number) => setHeights((prev) => prev.filter((_, i) => i !== index));
 
     const updateWidth = (value: string, index: number) => {
-        const updated = [...widths];
-        updated[index] = value;
-        setWidths(updated);
+        const updated = [...widths]; updated[index] = value; setWidths(updated);
     };
     const addWidth = () => setWidths((prev) => [...prev, '']);
-    const removeWidth = (index: number) =>
-        setWidths((prev) => prev.filter((_, i) => i !== index));
+    const removeWidth = (index: number) => setWidths((prev) => prev.filter((_, i) => i !== index));
 
-    /* ── Troca de tipo: reseta seleção de variante ── */
+    /* ── Troca de tipo: reseta variantes ── */
     const handleProductTypeChange = (type: ProductType) => {
         setProductType(type);
         setJanelaVariant(null);
         setJanelaData(defaultJanelaData());
+        setPortaVariant(null);
+        setPortaData(defaultPortaData());
         setName('');
     };
 
-    /* ── Troca de variante de janela: reseta os dados do form ── */
+    /* ── Troca de variante de janela ── */
     const handleJanelaVariantChange = (v: JanelaVariantKey) => {
         setJanelaVariant(v);
         setJanelaData(
-            initialData?.janela_data?.variant === v
-                ? initialData.janela_data
-                : defaultJanelaData(v)
+            initialData?.janela_data?.variant === v ? initialData.janela_data : defaultJanelaData(v)
         );
     };
 
-    /* ── Nome derivado para janela ── */
+    /* ── Troca de variante de porta ── */
+    const handlePortaVariantChange = (v: PortaVariantKey) => {
+        setPortaVariant(v);
+        setPortaData(
+            initialData?.porta_data?.variant === v ? initialData.porta_data : defaultPortaData(v)
+        );
+    };
+
+    /* ── Nome derivado ── */
     const derivedName = (): string => {
         if (productType === 'janela' && janelaVariant) {
-            const vLabel = JANELA_VARIANTS.find((v) => v.key === janelaVariant)?.label ?? '';
-            return `Janela ${vLabel}`;
+            return `Janela ${JANELA_VARIANTS.find((v) => v.key === janelaVariant)?.label ?? ''}`;
+        }
+        if (productType === 'porta' && portaVariant) {
+            return PORTA_VARIANTS.find((v) => v.key === portaVariant)?.label ?? 'Porta';
         }
         return name.trim();
     };
 
     /* ── Validação ── */
     const isValid = useMemo((): boolean => {
-        // Preço é obrigatório para todos
         const hasPrice = price.trim() !== '';
 
         if (productType === 'janela') {
             if (!janelaVariant) return false;
             return hasPrice && isJanelaBaseValid(janelaData);
         }
-
+        if (productType === 'porta') {
+            if (!portaVariant) return false;
+            return hasPrice && isPortaBaseValid(portaData);
+        }
         if (productType === 'generic') {
             const hasName = name.trim() !== '';
             const hasHeight = heights.some((h) => h.trim() !== '');
             const hasWidth = widths.some((w) => w.trim() !== '');
             return hasName && hasPrice && hasHeight && hasWidth;
         }
-
-        return false; // Nenhum tipo selecionado
-    }, [productType, janelaVariant, janelaData, price, name, heights, widths]);
+        return false;
+    }, [productType, janelaVariant, janelaData, portaVariant, portaData, price, name, heights, widths]);
 
     /* ── Confirmar ── */
     const handleConfirm = () => {
@@ -139,6 +152,13 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                 ...janelaData,
                 heights: janelaData.heights.map((h) => h.trim()).filter(Boolean),
                 widths: janelaData.widths.map((w) => w.trim()).filter(Boolean),
+            };
+        }
+        if (productType === 'porta') {
+            base.porta_data = {
+                ...portaData,
+                heights: portaData.heights.map((h) => h.trim()).filter(Boolean),
+                widths: portaData.widths.map((w) => w.trim()).filter(Boolean),
             };
         }
 
@@ -168,7 +188,7 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                 />
             )}
 
-            {/* ── 2b. Janela: form da variante selecionada ── */}
+            {/* ── 2b. Janela: form da variante ── */}
             {productType === 'janela' && janelaVariant && (
                 <>
                     <View style={styles.divider} />
@@ -180,12 +200,34 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                 </>
             )}
 
-            {/* ── 2c. Genérico: nome + dimensões ── */}
+            {/* ── 2c. Porta: dropdown de variante ── */}
+            {productType === 'porta' && (
+                <FormDropdown<PortaVariantKey>
+                    label="Tipo de porta"
+                    placeholder="Selecione a variante..."
+                    options={PORTA_VARIANTS}
+                    value={portaVariant}
+                    onChange={handlePortaVariantChange}
+                />
+            )}
+
+            {/* ── 2d. Porta: form da variante ── */}
+            {productType === 'porta' && portaVariant && (
+                <>
+                    <View style={styles.divider} />
+                    <PortaForm
+                        variant={portaVariant}
+                        initialData={portaData}
+                        onChange={setPortaData}
+                    />
+                </>
+            )}
+
+            {/* ── 2e. Genérico: nome + dimensões ── */}
             {productType === 'generic' && (
                 <>
                     <View style={styles.divider} />
 
-                    {/* Nome */}
                     <View style={styles.fieldGroup}>
                         <Text style={styles.label}>Nome do produto</Text>
                         <TextInput
@@ -198,7 +240,6 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                         />
                     </View>
 
-                    {/* Alturas */}
                     <View style={styles.fieldGroup}>
                         <Text style={styles.label}>Alturas (m)</Text>
                         {heights.map((h, i) => (
@@ -213,10 +254,7 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                                 />
                                 <Text style={styles.dimUnit}>m</Text>
                                 {heights.length > 1 && (
-                                    <TouchableOpacity
-                                        style={styles.dimRemoveButton}
-                                        onPress={() => removeHeight(i)}
-                                    >
+                                    <TouchableOpacity style={styles.dimRemoveButton} onPress={() => removeHeight(i)}>
                                         <Text style={styles.dimRemoveText}>−</Text>
                                     </TouchableOpacity>
                                 )}
@@ -227,7 +265,6 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                         </TouchableOpacity>
                     </View>
 
-                    {/* Larguras */}
                     <View style={styles.fieldGroup}>
                         <Text style={styles.label}>Larguras (m)</Text>
                         {widths.map((w, i) => (
@@ -242,10 +279,7 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                                 />
                                 <Text style={styles.dimUnit}>m</Text>
                                 {widths.length > 1 && (
-                                    <TouchableOpacity
-                                        style={styles.dimRemoveButton}
-                                        onPress={() => removeWidth(i)}
-                                    >
+                                    <TouchableOpacity style={styles.dimRemoveButton} onPress={() => removeWidth(i)}>
                                         <Text style={styles.dimRemoveText}>−</Text>
                                     </TouchableOpacity>
                                 )}
@@ -258,12 +292,11 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                 </>
             )}
 
-            {/* ── 3. Campos comuns ── */}
+            {/* ── 3. Campos comuns (só aparecem após tipo selecionado) ── */}
             {productType !== null && (
                 <>
                     <View style={styles.divider} />
 
-                    {/* Preço */}
                     <View style={styles.fieldGroup}>
                         <Text style={styles.label}>Preço (R$)</Text>
                         <TextInput
@@ -277,7 +310,6 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                         />
                     </View>
 
-                    {/* Status */}
                     <View style={styles.fieldGroup}>
                         <View style={styles.toggleRow}>
                             <Text style={styles.toggleLabel}>Produto concluído</Text>
@@ -285,7 +317,6 @@ export default function ProductForm({ initialData, onConfirm }: ProductFormProps
                         </View>
                     </View>
 
-                    {/* Observações */}
                     <View style={styles.fieldGroup}>
                         <Text style={styles.label}>Observações</Text>
                         <TextInput
