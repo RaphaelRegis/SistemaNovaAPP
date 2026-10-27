@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity } from "react-native";
-import { projectMetadataStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
+import { commonEditButtonStyles } from '@/styles/projects/project_page/Common.style';
 
 interface EditButtonProps {
     onPress: () => void;
@@ -8,8 +8,8 @@ interface EditButtonProps {
 
 export default function ProjectPageCommonEditButton({ onPress, text }: EditButtonProps) {
     return (
-        <TouchableOpacity style={styles.editButton} onPress={onPress}>
-            <Text style={styles.editButtonText}>{text}</Text>
+        <TouchableOpacity style={commonEditButtonStyles.editButton} onPress={onPress}>
+            <Text style={commonEditButtonStyles.editButtonText}>{text}</Text>
         </TouchableOpacity>
     )
 }

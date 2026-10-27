@@ -86,19 +86,5 @@ export const projectMetadataStyles = StyleSheet.create({
         paddingTop: 8,
         borderTopWidth: 1,
         borderTopColor: '#f0f0f0',
-    },
-    editButton: {
-        marginTop: 12,
-        backgroundColor: '#f8f9fa',
-        paddingVertical: 10,
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#e9ecef',
-    },
-    editButtonText: {
-        fontSize: 14,
-        fontWeight: '600',
-        color: '#343a40',
-        textAlign: 'center',
-    },
+    }
 });
