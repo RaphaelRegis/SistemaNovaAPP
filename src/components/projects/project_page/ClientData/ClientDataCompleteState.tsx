@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { clientDataStyles } from "@/styles/projects/project_page/ProjectPage.style";
+import { clientDataStyles } from "@/styles/projects/project_page/ClientData.style";
 import { ClientData } from "@/entities/projects/Project";
 
 

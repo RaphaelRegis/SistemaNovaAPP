@@ -1,5 +1,5 @@
 import { ScrollView, Text, View } from "react-native";
-import { projectMetadataStyles as styles } from "@/styles/projects/project_page/ProjectPage.style";
+import { projectMetadataStyles } from "@/styles/projects/project_page/ProjectMetadata.style";
 
 interface BadgesProps {
     isDone: boolean;
@@ -11,17 +11,17 @@ export default function Badges({ isDone, paymentMethods }: BadgesProps) {
         <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.badgeRow}
+            contentContainerStyle={projectMetadataStyles.badgeRow}
         >
-            <View style={[styles.badge, isDone ? styles.badgeDone : styles.badgePending]}>
-                <Text style={[styles.badgeText, isDone ? styles.badgeDoneText : styles.badgePendingText]}>
+            <View style={[projectMetadataStyles.badge, isDone ? projectMetadataStyles.badgeDone : projectMetadataStyles.badgePending]}>
+                <Text style={[projectMetadataStyles.badgeText, isDone ? projectMetadataStyles.badgeDoneText : projectMetadataStyles.badgePendingText]}>
                     {isDone ? '✓ Concluído' : '⏳ Em andamento'}
                 </Text>
             </View>
 
             {paymentMethods.map((method) => (
-                <View key={method} style={styles.paymentBadge}>
-                    <Text style={styles.paymentBadgeText}>{method}</Text>
+                <View key={method} style={projectMetadataStyles.paymentBadge}>
+                    <Text style={projectMetadataStyles.paymentBadgeText}>{method}</Text>
                 </View>
             ))}
         </ScrollView>

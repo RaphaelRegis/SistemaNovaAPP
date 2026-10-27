@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { JanelaVariantData } from '@/entities/projects/Project';
-import { productListStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
+import { productListStyles, itemStyles } from '@/styles/projects/project_page/ProductList.style';
 
 interface VitroListItemProps {
     data: JanelaVariantData;
@@ -13,19 +13,19 @@ export default function VitroListItem({ data }: VitroListItemProps) {
             <Text style={itemStyles.variantLabel}>Vitrô</Text>
 
             {(data.heights.length > 0 || data.widths.length > 0) && (
-                <View style={styles.productDimRow}>
+                <View style={productListStyles.productDimRow}>
                     {data.heights.length > 0 && (
                         <Text>
-                            <Text style={styles.productDimLabel}>Alt: </Text>
-                            <Text style={styles.productDimValue}>
+                            <Text style={productListStyles.productDimLabel}>Alt: </Text>
+                            <Text style={productListStyles.productDimValue}>
                                 {data.heights.join(', ')} m
                             </Text>
                         </Text>
                     )}
                     {data.widths.length > 0 && (
                         <Text>
-                            <Text style={styles.productDimLabel}>Larg: </Text>
-                            <Text style={styles.productDimValue}>
+                            <Text style={productListStyles.productDimLabel}>Larg: </Text>
+                            <Text style={productListStyles.productDimValue}>
                                 {data.widths.join(', ')} m
                             </Text>
                         </Text>
@@ -47,29 +47,3 @@ export default function VitroListItem({ data }: VitroListItemProps) {
         </View>
     );
 }
-
-const itemStyles = StyleSheet.create({
-    variantLabel: {
-        fontSize: 12,
-        fontWeight: '600',
-        color: '#4a90e2',
-        marginBottom: 2,
-        textTransform: 'uppercase',
-        letterSpacing: 0.4,
-    },
-    specsRow: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: 4,
-        marginTop: 2,
-    },
-    specChip: {
-        fontSize: 11,
-        color: '#666',
-        backgroundColor: '#f0f4fb',
-        paddingHorizontal: 7,
-        paddingVertical: 2,
-        borderRadius: 8,
-        overflow: 'hidden',
-    },
-});

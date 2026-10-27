@@ -1,10 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { View, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Address } from '@/entities/projects/Project';
-import {
-    sectionStyles,
-    addressListStyles as styles,
-} from '@/styles/projects/project_page/ProjectPage.style';
+import { sectionStyles } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
 import AddressForm from './AddressDataForm';
 import ProjectPageCommonEditButton from '../common/ProjectPageCommonEditButton';

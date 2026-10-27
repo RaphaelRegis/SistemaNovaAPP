@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { projectMetadataStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
+import { projectMetadataStyles } from '@/styles/projects/project_page/ProjectMetadata.style';
 
 interface DateProps {
     startDate: string;
@@ -11,15 +11,15 @@ export default function ProjectMetadataDates({ startDate, endDate }: DateProps) 
     return (
         <>
             <View
-                style={styles.infoRow}
+                style={projectMetadataStyles.infoRow}
             >
-                <Text style={styles.infoLabel}>Início</Text>
-                <Text style={styles.infoValue}>{startDate}</Text>
+                <Text style={projectMetadataStyles.infoLabel}>Início</Text>
+                <Text style={projectMetadataStyles.infoValue}>{startDate}</Text>
             </View>
             {endDate && (
-                <View style={styles.infoRow}>
-                    <Text style={styles.infoLabel}>Término</Text>
-                    <Text style={styles.infoValue}>{endDate}</Text>
+                <View style={projectMetadataStyles.infoRow}>
+                    <Text style={projectMetadataStyles.infoLabel}>Término</Text>
+                    <Text style={projectMetadataStyles.infoValue}>{endDate}</Text>
                 </View>
             )}
         </>

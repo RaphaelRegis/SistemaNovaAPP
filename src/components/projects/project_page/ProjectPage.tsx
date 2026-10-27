@@ -9,7 +9,7 @@ import ProjectActions from './ProjectActions/ProjectActions';
 import { FullProject } from '@/entities/projects/Project';
 import { mainService } from '@/services/projects/projects.service';
 import ServiceData from './ServiceList/ServiceData';
-import { projectPageStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
+import { projectPageStyles } from '@/styles/projects/project_page/ProjectPage.style';
 
 export default function ProjectPage() {
     const { id } = useLocalSearchParams<{ id: string }>();
@@ -21,15 +21,15 @@ export default function ProjectPage() {
 
     if (!fullProject) {
         return (
-            <View style={styles.container}>
+            <View style={projectPageStyles.container}>
                 <ActivityIndicator size="large" />
             </View>
         );
     }
 
     return (
-        <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={projectPageStyles.container}>
+            <ScrollView contentContainerStyle={projectPageStyles.scrollContent}>
                 <ProjectMetadata projectData={fullProject.project_data} />
                 <ClientData clientData={fullProject.client_data ?? null} />
                 <AddressData addresses={fullProject.address_list} />

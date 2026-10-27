@@ -1,10 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { View, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Product } from '@/entities/projects/Project';
-import {
-    sectionStyles,
-    productListStyles as styles,
-} from '@/styles/projects/project_page/ProjectPage.style';
+import { sectionStyles } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
 import ProductForm from './ProductDataForm';
 import ProductDataEmptyListState from './ProductDataEmptyListState';

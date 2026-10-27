@@ -1,10 +1,7 @@
-import React, { useState, useCallback } from 'react';
-import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { useState, useCallback } from 'react';
+import { View, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { ClientData } from '@/entities/projects/Project';
-import {
-    sectionStyles,
-    clientDataStyles,
-} from '@/styles/projects/project_page/ProjectPage.style';
+import { sectionStyles } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
 import ClientDataForm from './ClientDataForm';
 import ClientDataEmptyState from './ClientDataEmptyState';

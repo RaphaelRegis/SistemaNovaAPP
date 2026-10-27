@@ -2,8 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Service } from '@/entities/projects/Project';
 import {
-    sectionStyles,
-    serviceListStyles as styles,
+    sectionStyles
 } from '@/styles/projects/project_page/ProjectPage.style';
 import EditModal from '@/components/common/modal/EditModal';
 import ServiceForm from './ServiceDataForm';

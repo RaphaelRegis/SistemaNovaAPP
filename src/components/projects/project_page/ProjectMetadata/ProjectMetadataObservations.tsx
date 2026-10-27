@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { projectMetadataStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
+import { projectMetadataStyles } from "@/styles/projects/project_page/ProjectMetadata.style";
 
 interface ObservationsProps {
     observations: string;
@@ -8,7 +8,7 @@ interface ObservationsProps {
 export default function ProjectMetadataObservations({ observations }: ObservationsProps) {
     return (
         <View>
-            <Text style={styles.observations}>Obs: {observations}</Text>
+            <Text style={projectMetadataStyles.observations}>Obs: {observations}</Text>
         </View>
     )
 }

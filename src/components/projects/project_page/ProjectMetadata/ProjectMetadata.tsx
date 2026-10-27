@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { ProjectData } from '@/entities/projects/Project';
-import { projectMetadataStyles as styles } from '@/styles/projects/project_page/ProjectPage.style';
+import { projectMetadataStyles } from '@/styles/projects/project_page/ProjectMetadata.style';
 import EditModal from '@/components/common/modal/EditModal';
 import ProjectMetadataForm from './ProjectMetadataForm';
 import Badges from './ProjectMetadataBadges';
@@ -24,9 +24,9 @@ export default function ProjectMetadata({ projectData, onUpdate }: ProjectMetada
 
     return (
         <>
-            <View style={styles.card}>
+            <View style={projectMetadataStyles.card}>
                 {/* Nome do projeto */}
-                <Text style={styles.projectName}>{projectData.project_name}</Text>
+                <Text style={projectMetadataStyles.projectName}>{projectData.project_name}</Text>
 
                 {/* Badges: status + métodos de pagamento */}
                 <Badges
@@ -41,7 +41,7 @@ export default function ProjectMetadata({ projectData, onUpdate }: ProjectMetada
                 />
 
                 {/* Valor total */}
-                <Text style={styles.totalValue}>R$ {projectData.total_value}</Text>
+                <Text style={projectMetadataStyles.totalValue}>R$ {projectData.total_value}</Text>
 
                 {/* Observações */}
                 {projectData.observations && <ProjectMetadataObservations observations={projectData.observations} />}

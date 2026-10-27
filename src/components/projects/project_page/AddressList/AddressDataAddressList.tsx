@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import ProjectPageCommonEditButton from "../common/ProjectPageCommonEditButton";
 import { Address } from "@/entities/projects/Project";
-import { addressListStyles as styles } from "@/styles/projects/project_page/ProjectPage.style";
+import { addressListStyles } from "@/styles/projects/project_page/AddressList.style";
 
 interface AddressListProps {
     addresses: Address[];
@@ -17,12 +17,12 @@ export default function AddressList({ addresses, onUpdate }: AddressListProps) {
                     <View
                         key={address.id}
                         style={[
-                            styles.addressItem,
+                            addressListStyles.addressItem,
                             index === addresses.length - 1 && { borderBottomWidth: 0 },
                         ]}
                     >
-                        <Text style={styles.addressCity}>{address.city}</Text>
-                        <Text style={styles.addressText}>{address.address}</Text>
+                        <Text style={addressListStyles.addressCity}>{address.city}</Text>
+                        <Text style={addressListStyles.addressText}>{address.address}</Text>
 
                         {/* Botão de editar endereço*/}
                         <ProjectPageCommonEditButton

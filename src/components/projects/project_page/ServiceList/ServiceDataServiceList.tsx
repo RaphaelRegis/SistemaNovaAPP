@@ -1,4 +1,4 @@
-import { serviceListStyles as styles } from "@/styles/projects/project_page/ProjectPage.style";
+import { serviceListStyles } from "@/styles/projects/project_page/ServiceList.style";
 import { Service } from "@/entities/projects/Project";
 import { Text, TouchableOpacity, View } from "react-native";
 import ProjectPageCommonEditButton from "../common/ProjectPageCommonEditButton";
@@ -16,26 +16,26 @@ export default function ServiceDataServiceList({ services, onUpdate }: ServiceDa
                     <View
                         key={service.id}
                         style={[
-                            styles.serviceItem,
+                            serviceListStyles.serviceItem,
                             index === services.length - 1 && { borderBottomWidth: 0 },
                         ]}
                     >
                         {/* Descrição + Preço */}
-                        <View style={styles.serviceHeader}>
-                            <Text style={styles.serviceDescription}>{service.description}</Text>
-                            <Text style={styles.servicePrice}>R$ {service.price}</Text>
+                        <View style={serviceListStyles.serviceHeader}>
+                            <Text style={serviceListStyles.serviceDescription}>{service.description}</Text>
+                            <Text style={serviceListStyles.servicePrice}>R$ {service.price}</Text>
                         </View>
 
                         {/* Status */}
-                        <View style={service.done ? styles.serviceDoneTag : styles.servicePendingTag}>
-                            <Text style={service.done ? styles.serviceDoneTagText : styles.servicePendingTagText}>
+                        <View style={service.done ? serviceListStyles.serviceDoneTag : serviceListStyles.servicePendingTag}>
+                            <Text style={service.done ? serviceListStyles.serviceDoneTagText : serviceListStyles.servicePendingTagText}>
                                 {service.done ? '✓ Concluído' : '⏳ Pendente'}
                             </Text>
                         </View>
 
                         {/* Observações */}
                         {service.observations ? (
-                            <Text style={styles.serviceObs}>{service.observations}</Text>
+                            <Text style={serviceListStyles.serviceObs}>{service.observations}</Text>
                         ) : null}
 
                         {/* Botão de editar serviço */}
