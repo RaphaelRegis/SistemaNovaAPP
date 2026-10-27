@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import DefaultSearchBar from '../../../common/search_tools/DefaultSearchBar/DefaultSearchBar';
 import DefaultSearchFilters from '../../../common/search_tools/DefaultSearchFilters/DefaultSearchFilters';
 import { FilterValues, SearchPayload } from '@/entities/common/search_tools/SearchConfig';
-import { DefaultProjectsSearchAreaContainer } from '@/styles/projects/projects_main/ProjectMain.style';
+import { projectsSearchAreaStyles } from '@/styles/projects/projects_main/ProjectSearchArea.style';
 import { projectsSearchAreaService } from '@/services/projects/projects.service';
 
 interface ProjectsSearchAreaProps {
@@ -21,7 +21,7 @@ export default function ProjectsSearchArea({ onSearch }: ProjectsSearchAreaProps
     }, []);
 
     return (
-        <View style={DefaultProjectsSearchAreaContainer}>
+        <View style={projectsSearchAreaStyles.container}>
             <DefaultSearchBar
                 config={searchBarConfig}
                 currentFilters={filterValues}

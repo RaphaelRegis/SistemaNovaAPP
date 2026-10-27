@@ -5,7 +5,7 @@ import ProjectList from './ProjectList/ProjectList';
 import { ProjectData } from '@/entities/projects/Project';
 import { mainService } from '@/services/projects/projects.service';
 import { SearchPayload } from '@/entities/common/search_tools/SearchConfig';
-import { projectMainStyles as styles, DefaultProjectMainContainer } from '@/styles/projects/projects_main/ProjectMain.style';
+import { projectMainStyles } from '@/styles/projects/projects_main/ProjectMain.style';
 import ProjectsSearchArea from './ProjectSearchArea/ProjectsSearchArea';
 
 export default function ProjectsMain() {
@@ -28,7 +28,7 @@ export default function ProjectsMain() {
 
     if (loading) {
         return (
-            <View style={styles.centered}>
+            <View style={projectMainStyles.centered}>
                 <ActivityIndicator size="large" />
             </View>
         );
@@ -36,14 +36,14 @@ export default function ProjectsMain() {
 
     if (error) {
         return (
-            <View style={styles.centered}>
-                <Text style={styles.errorText}>{error}</Text>
+            <View style={projectMainStyles.centered}>
+                <Text style={projectMainStyles.errorText}>{error}</Text>
             </View>
         );
     }
 
     return (
-        <View style={DefaultProjectMainContainer}>
+        <View style={projectMainStyles.container}>
             <ProjectsSearchArea onSearch={handleSearch} />
             <ProjectList projectList={projectList} searchPayload={searchPayload} />
             <ProjectsActions />

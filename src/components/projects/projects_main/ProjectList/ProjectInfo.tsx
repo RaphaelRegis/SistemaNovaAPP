@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { useRouter } from 'expo-router';
 import { ProjectData } from '@/entities/projects/Project';
-import { projectInfoStyles as styles } from '@/styles/projects/projects_main/ProjectMain.style';
+import { projectInfoStyles } from '@/styles/projects/projects_main/ProjectList.style';
 
 // Habilita LayoutAnimation no Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -30,16 +30,16 @@ export default function ProjectInfo({ project }: ProjectInfoProps) {
     }, [project.id, router]);
 
     return (
-        <View style={styles.card}>
+        <View style={projectInfoStyles.card}>
             {/* Linha principal: nome + chevron */}
-            <TouchableOpacity style={styles.header} onPress={toggleExpand} activeOpacity={0.7}>
-                <Text style={styles.name}>{project.project_name}</Text>
-                <Text style={styles.chevron}>{expanded ? '▲' : '▼'}</Text>
+            <TouchableOpacity style={projectInfoStyles.header} onPress={toggleExpand} activeOpacity={0.7}>
+                <Text style={projectInfoStyles.name}>{project.project_name}</Text>
+                <Text style={projectInfoStyles.chevron}>{expanded ? '▲' : '▼'}</Text>
             </TouchableOpacity>
 
             {/* Detalhes expandíveis */}
             {expanded && (
-                <View style={styles.details}>
+                <View style={projectInfoStyles.details}>
                     <DetailRow label="Status" value={project.done ? 'Concluído ✓' : 'Em andamento'} />
                     <DetailRow label="Valor total" value={`R$ ${project.total_value}`} />
                     <DetailRow label="Início" value={project.start_date || '—'} />
@@ -55,9 +55,9 @@ export default function ProjectInfo({ project }: ProjectInfoProps) {
             )}
 
             {/* Rodapé: botão de atualizar projeto */}
-            <View style={styles.footer}>
-                <TouchableOpacity style={styles.updateButton} onPress={handleOpenProject} activeOpacity={0.75}>
-                    <Text style={styles.updateButtonText}>Atualizar projeto</Text>
+            <View style={projectInfoStyles.footer}>
+                <TouchableOpacity style={projectInfoStyles.updateButton} onPress={handleOpenProject} activeOpacity={0.75}>
+                    <Text style={projectInfoStyles.updateButtonText}>Atualizar projeto</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -66,9 +66,9 @@ export default function ProjectInfo({ project }: ProjectInfoProps) {
 
 function DetailRow({ label, value }: { label: string; value: string }) {
     return (
-        <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>{label}:</Text>
-            <Text style={styles.detailValue}>{value}</Text>
+        <View style={projectInfoStyles.detailRow}>
+            <Text style={projectInfoStyles.detailLabel}>{label}:</Text>
+            <Text style={projectInfoStyles.detailValue}>{value}</Text>
         </View>
     );
 }

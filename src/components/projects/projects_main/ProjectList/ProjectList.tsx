@@ -3,7 +3,7 @@ import { FlatList, View, Text } from 'react-native';
 import ProjectInfo from './ProjectInfo';
 import { ProjectData } from '@/entities/projects/Project';
 import { SearchPayload } from '@/entities/common/search_tools/SearchConfig';
-import { projectListStyles as styles } from '@/styles/projects/projects_main/ProjectMain.style';
+import { projectListStyles } from '@/styles/projects/projects_main/ProjectList.style';
 import { projectsListService } from '@/services/projects/projects.service';
 
 interface ProjectListProps {
@@ -32,10 +32,10 @@ export default function ProjectList({ projectList, searchPayload }: ProjectListP
             data={visibleProjects}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
-            contentContainerStyle={styles.content}
+            contentContainerStyle={projectListStyles.content}
             ListEmptyComponent={
-                <View style={styles.empty}>
-                    <Text style={styles.emptyText}>Nenhum projeto encontrado.</Text>
+                <View style={projectListStyles.empty}>
+                    <Text style={projectListStyles.emptyText}>Nenhum projeto encontrado.</Text>
                 </View>
             }
         />
