@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-const bottomBarStyles = StyleSheet.create({
+export const defaultBottomBarStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: '#fff',
         borderTopWidth: 1,
         borderTopColor: '#eee',
         paddingBottom: 4,
-    },
+    }
+});
+
+export const bottomBarNavButtonStyles = StyleSheet.create({
     button: {
         flex: 1,
         alignItems: 'center',
@@ -30,10 +33,3 @@ const bottomBarStyles = StyleSheet.create({
         fontWeight: '600',
     },
 });
-
-export const DefaultBottomBarContainer = bottomBarStyles.container;
-export const BottomBarNavButtonContainer = bottomBarStyles.button;
-export const BottomBarNavButtonIcon = bottomBarStyles.icon;
-export const BottomBarNavButtonIconActive = bottomBarStyles.iconActive;
-export const BottomBarNavButtonLabel = bottomBarStyles.label;
-export const BottomBarNavButtonLabelActive = bottomBarStyles.labelActive;

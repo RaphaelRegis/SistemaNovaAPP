@@ -1,9 +1,15 @@
 import { StyleSheet } from 'react-native';
 
-export const defaultSearchFiltersStyles = StyleSheet.create({
+
+
+export const defaultSearchFiltersContainerStyles = StyleSheet.create({
     container: {
         gap: 8,
-    },
+    }
+});
+
+// campos comuns dos filtros
+const commonAttributtes = StyleSheet.create({
     filterGroup: {
         gap: 4,
     },
@@ -36,6 +42,19 @@ export const defaultSearchFiltersStyles = StyleSheet.create({
         color: '#fff',
         fontWeight: '600',
     },
+})
+
+export const booleanFilterStyle = StyleSheet.create({
+    filterGroup: commonAttributtes.filterGroup,
+    chip: commonAttributtes.chip,
+    chipActive: commonAttributtes.chipActive,
+    chipText: commonAttributtes.chipText,
+    chipTextActive: commonAttributtes.chipTextActive,
+})
+
+export const dateRangeFilterStyle = StyleSheet.create({
+    filterGroup: commonAttributtes.filterGroup,
+    filterLabel: commonAttributtes.filterLabel,
     dateRow: {
         flexDirection: 'row',
         gap: 8,
@@ -49,4 +68,24 @@ export const defaultSearchFiltersStyles = StyleSheet.create({
         paddingVertical: 6,
         fontSize: 13,
     },
-});
+})
+
+export const multiSelectFilterStyle = StyleSheet.create({
+    filterGroup: commonAttributtes.filterGroup,
+    filterLabel: commonAttributtes.filterLabel,
+    chips: commonAttributtes.chips,
+    chip: commonAttributtes.chip,
+    chipActive: commonAttributtes.chipActive,
+    chipText: commonAttributtes.chipText,
+    chipTextActive: commonAttributtes.chipTextActive,
+})
+
+export const sortFilterStyle = StyleSheet.create({
+    filterGroup: commonAttributtes.filterGroup,
+    filterLabel: commonAttributtes.filterLabel,
+    chips: commonAttributtes.chips,
+    chip: commonAttributtes.chip,
+    chipActive: commonAttributtes.chipActive,
+    chipText: commonAttributtes.chipText,
+    chipTextActive: commonAttributtes.chipTextActive,
+})

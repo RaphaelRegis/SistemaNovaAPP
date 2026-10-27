@@ -1,6 +1,6 @@
 import { FilterConfig } from "@/entities/common/search_tools/SearchConfig";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { defaultSearchFiltersStyles } from "@/styles/common/search_tools/DefaultSearchFilters.style";
+import { multiSelectFilterStyle } from "@/styles/common/search_tools/DefaultSearchFilters.style";
 
 export default function MultiselectFilter({ filter, value, onUpdate }: { filter: FilterConfig; value: string[] | undefined; onUpdate: (v: unknown) => void; }) {
     const selected = value ?? [];
@@ -13,18 +13,18 @@ export default function MultiselectFilter({ filter, value, onUpdate }: { filter:
     };
 
     return (
-        <View style={defaultSearchFiltersStyles.filterGroup}>
-            <Text style={defaultSearchFiltersStyles.filterLabel}>{filter.label}</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={defaultSearchFiltersStyles.chips}>
+        <View style={multiSelectFilterStyle.filterGroup}>
+            <Text style={multiSelectFilterStyle.filterLabel}>{filter.label}</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={multiSelectFilterStyle.chips}>
                 {filter.options?.map((opt) => {
                     const active = selected.includes(opt.value);
                     return (
                         <TouchableOpacity
                             key={opt.value}
-                            style={[defaultSearchFiltersStyles.chip, active && defaultSearchFiltersStyles.chipActive]}
+                            style={[multiSelectFilterStyle.chip, active && multiSelectFilterStyle.chipActive]}
                             onPress={() => toggle(opt.value)}
                         >
-                            <Text style={[defaultSearchFiltersStyles.chipText, active && defaultSearchFiltersStyles.chipTextActive]}>{opt.label}</Text>
+                            <Text style={[multiSelectFilterStyle.chipText, active && multiSelectFilterStyle.chipTextActive]}>{opt.label}</Text>
                         </TouchableOpacity>
                     );
                 })}

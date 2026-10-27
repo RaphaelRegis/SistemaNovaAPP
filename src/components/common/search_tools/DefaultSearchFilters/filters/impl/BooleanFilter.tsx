@@ -1,5 +1,5 @@
 import { FilterConfig } from "@/entities/common/search_tools/SearchConfig";
-import { defaultSearchFiltersStyles } from "@/styles/common/search_tools/DefaultSearchFilters.style";
+import { booleanFilterStyle } from "@/styles/common/search_tools/DefaultSearchFilters.style";
 import { TouchableOpacity, View, Text } from "react-native";
 
 export default function BooleanFilter({ filter, value, onUpdate }: {
@@ -17,10 +17,13 @@ export default function BooleanFilter({ filter, value, onUpdate }: {
     const active = value !== undefined;
 
     return (
-        <View style={defaultSearchFiltersStyles.filterGroup}>
-            <TouchableOpacity style={[defaultSearchFiltersStyles.chip, active && defaultSearchFiltersStyles.chipActive]} onPress={cycle}>
-                <Text style={[defaultSearchFiltersStyles.chipText, active && defaultSearchFiltersStyles.chipTextActive]}>{label}</Text>
+        <View style={booleanFilterStyle.filterGroup}>
+            <TouchableOpacity style={[booleanFilterStyle.chip, active && booleanFilterStyle.chipActive]} onPress={cycle}>
+                <Text style={[booleanFilterStyle.chipText, active && booleanFilterStyle.chipTextActive]}>{label}</Text>
             </TouchableOpacity>
         </View>
     );
 }
+
+
+// usa filterGroup, chip, chipActive, chipText, chipTextActive

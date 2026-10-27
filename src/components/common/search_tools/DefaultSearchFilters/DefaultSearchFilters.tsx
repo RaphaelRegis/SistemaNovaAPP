@@ -5,7 +5,7 @@ import {
     FilterConfig,
     FilterValues,
 } from '@/entities/common/search_tools/SearchConfig';
-import { defaultSearchFiltersStyles } from '@/styles/common/search_tools/DefaultSearchFilters.style';
+import { defaultSearchFiltersContainerStyles } from '@/styles/common/search_tools/DefaultSearchFilters.style';
 import FilterItem from './filters/strategy/FilterItem';
 
 interface DefaultSearchFiltersProps {
@@ -23,7 +23,7 @@ export default function DefaultSearchFilters({ config, values, onChange }: Defau
     );
 
     return (
-        <View style={defaultSearchFiltersStyles.container}>
+        <View style={defaultSearchFiltersContainerStyles.container}>
             {config.filters.map((filter) => (
                 <FilterItem
                     key={filter.key}

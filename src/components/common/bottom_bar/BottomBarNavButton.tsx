@@ -3,11 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import { NavButton } from '@/entities/common/bottom_bar/NavButton';
 import {
-    BottomBarNavButtonContainer,
-    BottomBarNavButtonIcon,
-    BottomBarNavButtonIconActive,
-    BottomBarNavButtonLabel,
-    BottomBarNavButtonLabelActive,
+    bottomBarNavButtonStyles,
 } from '@/styles/common/bottom_bar/BottomBar.style';
 
 const ICON_MAP: Record<string, string> = {
@@ -33,14 +29,14 @@ export default function BottomBarNavButton({ navButton }: BottomBarNavButtonProp
 
     return (
         <TouchableOpacity
-            style={BottomBarNavButtonContainer}
+            style={bottomBarNavButtonStyles.button}
             onPress={() => router.push(route as any)}
             activeOpacity={0.7}
         >
-            <Text style={[BottomBarNavButtonIcon, isActive && BottomBarNavButtonIconActive]}>
+            <Text style={[bottomBarNavButtonStyles.icon, isActive && bottomBarNavButtonStyles.iconActive]}>
                 {ICON_MAP[navButton.icon] ?? ICON_MAP[navButton.name] ?? '●'}
             </Text>
-            <Text style={[BottomBarNavButtonLabel, isActive && BottomBarNavButtonLabelActive]}>
+            <Text style={[bottomBarNavButtonStyles.label, isActive && bottomBarNavButtonStyles.labelActive]}>
                 {navButton.name}
             </Text>
         </TouchableOpacity>
