@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const formDropdownStyle = StyleSheet.create({
+export const formDropdownStyle = StyleSheet.create({
     backdrop: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.25)',
@@ -12,6 +12,3 @@ const formDropdownStyle = StyleSheet.create({
         overflow: 'hidden',
     },
 });
-
-export const DefaultBackdropContainer = formDropdownStyle.backdrop;
-export const DefaultMenuContainer = formDropdownStyle.menuWrapper;

@@ -8,7 +8,7 @@ import {
     JanelaVariantKey,
     JANELA_VARIANTS,
 } from '@/entities/projects/Project';
-import { formStyles as styles } from '@/styles/common/modal/EditForm.style';
+import { formStyles as styles } from '@/styles/common/form/EditForm.style';
 import FormDropdown from '@/components/common/form/FormDropdown';
 import JanelaForm from './productVariations/janela/JanelaForm';
 import { isJanelaBaseValid } from './productVariations/janela/_shared/JanelaBaseForm';

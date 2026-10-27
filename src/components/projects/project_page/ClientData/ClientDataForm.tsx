@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ClientData } from '@/entities/projects/Project';
-import { formStyles as styles } from '@/styles/common/modal/EditForm.style';
+import { formStyles as styles } from '@/styles/common/form/EditForm.style';
 
 interface ClientDataFormProps {
     initialData: ClientData | null;

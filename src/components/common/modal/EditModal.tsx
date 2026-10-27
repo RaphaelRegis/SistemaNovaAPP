@@ -8,7 +8,7 @@ import {
     KeyboardAvoidingView,
     Platform,
 } from 'react-native';
-import { editModalStyles as styles } from '@/styles/common/modal/EditModal.style';
+import { editModalStyles } from '@/styles/common/modal/EditModal.style';
 
 interface EditModalProps {
     /** Título exibido no cabeçalho do modal */
@@ -37,7 +37,7 @@ export default function EditModal({ title, visible, onClose, children }: EditMod
         >
             {/* Overlay: toca fora para fechar */}
             <TouchableOpacity
-                style={styles.overlay}
+                style={editModalStyles.overlay}
                 activeOpacity={1}
                 onPress={onClose}
             >
@@ -48,21 +48,21 @@ export default function EditModal({ title, visible, onClose, children }: EditMod
                     {/* O toque dentro do sheet não propaga para o overlay */}
                     <TouchableOpacity
                         activeOpacity={1}
-                        onPress={() => {}}
-                        style={styles.sheet}
+                        onPress={() => { }}
+                        style={editModalStyles.sheet}
                     >
                         {/* Handle visual */}
-                        <View style={styles.handle} />
+                        <View style={editModalStyles.handle} />
 
                         {/* Cabeçalho */}
-                        <View style={styles.header}>
-                            <Text style={styles.title}>{title}</Text>
+                        <View style={editModalStyles.header}>
+                            <Text style={editModalStyles.title}>{title}</Text>
                             <TouchableOpacity
-                                style={styles.closeButton}
+                                style={editModalStyles.closeButton}
                                 onPress={onClose}
                                 hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                             >
-                                <Text style={styles.closeButtonText}>✕</Text>
+                                <Text style={editModalStyles.closeButtonText}>✕</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -70,7 +70,7 @@ export default function EditModal({ title, visible, onClose, children }: EditMod
                         <ScrollView
                             keyboardShouldPersistTaps="handled"
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={styles.content}
+                            contentContainerStyle={editModalStyles.content}
                         >
                             {children}
                         </ScrollView>

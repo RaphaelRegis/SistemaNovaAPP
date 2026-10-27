@@ -16,7 +16,7 @@ import {
     JanelaTipoVidro,
     JanelaCorVidro,
 } from '@/entities/projects/Project';
-import { formStyles as styles } from '@/styles/common/modal/EditForm.style';
+import { formStyles as styles } from '@/styles/common/form/EditForm.style';
 
 export interface JanelaBaseData {
     heights: string[];

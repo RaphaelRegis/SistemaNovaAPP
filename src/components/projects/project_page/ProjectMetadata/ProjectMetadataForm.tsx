@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Switch } from 'react-native';
 import { ProjectData } from '@/entities/projects/Project';
-import { formStyles as styles } from '@/styles/common/modal/EditForm.style';
+import { formStyles as styles } from '@/styles/common/form/EditForm.style';
 
 const PAYMENT_OPTIONS = ['pix', 'cartão', 'dinheiro', 'transferência', 'boleto'];
 
