@@ -59,7 +59,7 @@ export const projectInfoStyles = StyleSheet.create({
     },
     detailLabel: {
         fontSize: 13,
-        color: '#666',
+        color: '#665',
         fontWeight: '500',
     },
     detailValue: {

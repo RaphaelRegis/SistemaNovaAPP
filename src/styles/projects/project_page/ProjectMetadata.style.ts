@@ -80,7 +80,7 @@ export const projectMetadataStyles = StyleSheet.create({
     },
     observations: {
         fontSize: 13,
-        color: '#666',
+        color: '#665',
         fontStyle: 'italic',
         marginTop: 8,
         paddingTop: 8,

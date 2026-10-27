@@ -14,7 +14,7 @@ export const addressListStyles = StyleSheet.create({
     },
     addressText: {
         fontSize: 13,
-        color: '#666',
+        color: '#665',
     },
     editButton: {
         marginTop: 12,

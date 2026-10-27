@@ -98,7 +98,7 @@ export const itemStyles = StyleSheet.create({
     },
     specChip: {
         fontSize: 11,
-        color: '#666',
+        color: '#665',
         backgroundColor: '#f0f4fb',
         paddingHorizontal: 7,
         paddingVertical: 2,
