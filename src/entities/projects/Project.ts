@@ -56,11 +56,40 @@ export interface JanelaVariantData {
     corVidro: JanelaCorVidro | '';
 }
 
+/* ─── Variantes de Porta ─── */
+export type PortaVariantKey = 'deslizante' | 'dobradica' | 'pivotante' | 'social' | 'vidro';
+
+export const PORTA_VARIANTS: { key: PortaVariantKey; label: string }[] = [
+    { key: 'deslizante', label: 'Porta Deslizante' },
+    { key: 'dobradica', label: 'Porta Dobradiça' },
+    { key: 'pivotante', label: 'Porta Pivotante' },
+    { key: 'social', label: 'Porta Social' },
+    { key: 'vidro', label: 'Porta de Vidro' },
+];
+
+export const PORTA_COR_MATERIAL = ['Branco', 'Preto', 'Padrão de Madeira'] as const;
+export const PORTA_TIPO_VIDRO = ['Normal', 'Jateado'] as const;
+export const PORTA_COR_VIDRO = ['Transparente', 'Preto', 'Verde'] as const;
+
+export type PortaCorMaterial = typeof PORTA_COR_MATERIAL[number];
+export type PortaTipoVidro = typeof PORTA_TIPO_VIDRO[number];
+export type PortaCorVidro = typeof PORTA_COR_VIDRO[number];
+
+export interface PortaVariantData {
+    variant: PortaVariantKey;
+    heights: string[];
+    widths: string[];
+    corMaterial: PortaCorMaterial | '';
+    tipoVidro: PortaTipoVidro | '';
+    corVidro: PortaCorVidro | '';
+}
+
 /* ─── Produto base ─── */
-export type ProductType = 'janela' | 'generic';
+export type ProductType = 'janela' | 'porta' | 'generic';
 
 export const PRODUCT_TYPES: { key: ProductType; label: string }[] = [
     { key: 'janela', label: 'Janela' },
+    { key: 'porta', label: 'Porta' },
     { key: 'generic', label: 'Genérico' },
 ];
 
@@ -69,6 +98,8 @@ export interface Product {
     product_type: ProductType;
     /** Presente apenas quando product_type === 'janela' */
     janela_data?: JanelaVariantData;
+    /** Presente apenas quando product_type === 'porta' */
+    porta_data?: PortaVariantData;
     /** Campos legados / genéricos */
     name: string;
     heights: string[];
