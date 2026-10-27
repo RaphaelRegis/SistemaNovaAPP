@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { formStyles as styles } from '@/styles/common/modal/EditForm.style';
+import { DefaultOverlayStyle, DefaultOverlayMenuStyle } from '@/styles/common/form/FormDropdown.style';
 
 export interface DropdownOption<T extends string = string> {
     key: T;
@@ -55,11 +56,11 @@ export default function FormDropdown<T extends string = string>({
             >
                 {/* Overlay para fechar ao clicar fora */}
                 <TouchableOpacity
-                    style={overlayStyle.backdrop}
+                    style={DefaultOverlayStyle}
                     activeOpacity={1}
                     onPress={() => setOpen(false)}
                 >
-                    <View style={overlayStyle.menuWrapper}>
+                    <View style={DefaultOverlayMenuStyle}>
                         <View style={styles.dropdownMenu}>
                             <FlatList
                                 data={options}
@@ -84,7 +85,7 @@ export default function FormDropdown<T extends string = string>({
                                             style={[
                                                 styles.dropdownItemText,
                                                 item.key === value &&
-                                                    styles.dropdownItemTextSelected,
+                                                styles.dropdownItemTextSelected,
                                             ]}
                                         >
                                             {item.label}
@@ -99,16 +100,3 @@ export default function FormDropdown<T extends string = string>({
         </View>
     );
 }
-
-const overlayStyle = StyleSheet.create({
-    backdrop: {
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.25)',
-        justifyContent: 'center',
-        paddingHorizontal: 24,
-    },
-    menuWrapper: {
-        borderRadius: 10,
-        overflow: 'hidden',
-    },
-});
